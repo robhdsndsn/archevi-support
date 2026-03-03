@@ -64,6 +64,9 @@
     "tailwindcss-animate": "^1.0.7",
     "use-debounce": "^10.0.1"
   },
+  "resolutions": {
+    "prosemirror-view": "1.33.11"
+  },
   "devDependencies": {
     "@types/add": "^2",
     "@types/lodash": "^4",
