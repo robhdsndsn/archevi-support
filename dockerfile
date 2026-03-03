@@ -17,7 +17,7 @@ COPY ./ecosystem.config.js ./ecosystem.config.js
 
 # Install dependencies before copying source (better cache)
 RUN cd apps/api && npm install --production
-RUN cd apps/client && yarn install --frozen-lockfile --network-timeout 1000000
+RUN cd apps/client && yarn install --network-timeout 1000000
 
 # Copy source code (overwrites manifests but that's fine)
 COPY apps/api ./apps/api
