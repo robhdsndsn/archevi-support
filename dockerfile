@@ -32,6 +32,10 @@ RUN cd apps/client && yarn build
 # --- Runner stage: slim image (saves ~800MB vs node:lts) ---
 FROM node:lts-slim AS runner
 
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends openssl curl && \
+    rm -rf /var/lib/apt/lists/*
+
 WORKDIR /app
 
 # Copy built API
