@@ -158,9 +158,9 @@ export default function AdminLayout({ children }: any) {
                     <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-background px-6 pb-4">
                       <div className="flex align-middle flex-row h-14 items-center border-b-[1px]">
                         {/* <img className="h-8 w-auto" src="/logo.svg" alt="Workflow" /> */}
-                        <Link href="https://peppermint.sh">
+                        <Link href="https://archevi.com">
                           <span className="text-3xl ml-2  hover:text-green-600 font-bold ">
-                            Peppermint
+                            Archevi
                           </span>
                         </Link>
                       </div>
@@ -209,9 +209,9 @@ export default function AdminLayout({ children }: any) {
             <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-background pb-4">
               <div className="flex align-middle flex-row h-14 items-center border-b px-6">
                 {/* <img className="h-8 w-auto" src="/logo.svg" alt="Workflow" /> */}
-                <Link href="https://peppermint.sh">
+                <Link href="https://archevi.com">
                   <span className="text-3xl ml-2  hover:text-green-600 font-bold ">
-                    Peppermint
+                    Archevi
                   </span>
                 </Link>
               </div>
@@ -276,11 +276,9 @@ export default function AdminLayout({ children }: any) {
               <div className="flex flex-1 gap-x-4 self-stretch lg:gap-x-6 items-center">
                 <div className="sm:flex hidden w-full justify-start items-center space-x-6">
                   {user.isAdmin && (
-                    <Link href="https://github.com/Peppermint-Lab/peppermint/releases">
-                      <span className="inline-flex items-center rounded-md bg-green-700/10 px-3 py-2 text-xs font-medium text-green-600 ring-1 ring-inset ring-green-500/20">
-                        Version {process.env.NEXT_PUBLIC_CLIENT_VERSION}
-                      </span>
-                    </Link>
+                    <span className="inline-flex items-center rounded-md bg-green-700/10 px-3 py-2 text-xs font-medium text-green-600 ring-1 ring-inset ring-green-500/20">
+                      Version {process.env.NEXT_PUBLIC_CLIENT_VERSION}
+                    </span>
                   )}
                 </div>
 
@@ -305,20 +303,6 @@ export default function AdminLayout({ children }: any) {
                     </Link>
                   </Button>
 
-                  {user.isAdmin && (
-                    <Link
-                      href="https://github.com/Peppermint-Lab/peppermint/discussions"
-                      target="_blank"
-                      className="hover:cursor-pointer"
-                    >
-                      <Button
-                        variant="outline"
-                        className="text-foreground hover:cursor-pointer whitespace-nowrap"
-                      >
-                        Send Feedback
-                      </Button>
-                    </Link>
-                  )}
 
                   {/* Profile dropdown */}
                   <AccountDropdown />

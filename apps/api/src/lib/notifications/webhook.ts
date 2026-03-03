@@ -29,10 +29,10 @@ export async function sendWebhookNotification(webhook: any, message: any) {
             text: "Issue ID: " + message.id,
           },
           author: {
-            name: "peppermint.sh",
+            name: "Archevi Support",
             icon_url:
-              "https://avatars.githubusercontent.com/u/76014454?s=200&v=4",
-            url: "https://peppermint.sh/",
+              "https://raw.githubusercontent.com/robhdsndsn/archevi-support/archevi-brand/static/logo.svg",
+            url: "https://support.archevi.com",
           },
           fields: [
             {

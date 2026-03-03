@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "peppermint",
+  "name": "archevi-support",
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
@@ -14,15 +14,14 @@
     "turbo": "^2.0.3"
   },
   "workspaces": [
-    "apps/*",
+    "apps/api",
+    "apps/client",
     "packages/*"
   ],
   "packageManager": "yarn@4.2.2",
   "dependencies": {
     "fastify": "^5.1.0",
     "next": "^14.2.15",
-    "nextra": "^3.0.15",
-    "nextra-theme-docs": "^3.0.15",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   }

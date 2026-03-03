@@ -85,7 +85,7 @@ export default function Login({}) {
     <div className="min-h-screen bg-background flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <h2 className="mt-6 text-center text-3xl font-extrabold text-foreground">
-          Welcome to Peppermint
+          Archevi Support
         </h2>
       </div>
 
@@ -180,15 +180,12 @@ export default function Login({}) {
         )}
 
         <div className="mt-8 text-center flex flex-col space-y-2">
-          <span className="font-bold text-foreground">
-            Built with 💚 by Peppermint Labs
-          </span>
           <a
-            href="https://docs.peppermint.sh/"
+            href="https://archevi.com"
             target="_blank"
             className="text-foreground"
           >
-            Documentation
+            archevi.com
           </a>
         </div>
       </div>

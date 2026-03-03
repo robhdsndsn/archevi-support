@@ -12,14 +12,14 @@ export default function Document() {
         />
         <meta
           name="description"
-          content="Ticket management system selfhosted open source"
+          content="Archevi family document support portal"
         />
         <meta name="keywords" content="Keywords" />
 
         <meta name="theme-color" content="#ffffff" />
         <link rel="manifest" href="/manifest.json" />
 
-        <title>Peppermint</title>
+        <title>Archevi Support</title>
 
         <link href="/favicon/favicon.ico" rel="icon" />
         <link
