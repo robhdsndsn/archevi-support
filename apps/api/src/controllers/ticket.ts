@@ -129,6 +129,52 @@ export function ticketRoutes(fastify: FastifyInstance) {
         message: "Ticket created correctly",
         success: true,
         id: ticket.id,
+        number: ticket.Number,
+      });
+    }
+  );
+
+  // Look up a ticket by number (auto-increment integer) - returns minimal info
+  fastify.get(
+    "/api/v1/ticket/lookup/:number",
+    {
+      preHandler: requirePermission(["issue::read"]),
+    },
+    async (request: FastifyRequest, reply: FastifyReply) => {
+      const { number }: any = request.params;
+
+      const ticketNumber = parseInt(number, 10);
+      if (isNaN(ticketNumber)) {
+        return reply.status(400).send({
+          success: false,
+          error: "Invalid ticket number",
+        });
+      }
+
+      const ticket = await prisma.ticket.findFirst({
+        where: {
+          Number: ticketNumber,
+        },
+        select: {
+          Number: true,
+          title: true,
+          status: true,
+          isComplete: true,
+          createdAt: true,
+          updatedAt: true,
+        },
+      });
+
+      if (!ticket) {
+        return reply.status(404).send({
+          success: false,
+          error: "Ticket not found",
+        });
+      }
+
+      reply.send({
+        success: true,
+        ticket,
       });
     }
   );
