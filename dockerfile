@@ -18,6 +18,9 @@ RUN npm i -g typescript@latest -g --force
 COPY apps/api ./apps/api
 COPY apps/client ./apps/client
 
+# Copy root yarn.lock so client install resolves locked versions
+COPY yarn.lock ./apps/client/yarn.lock
+
 RUN cd apps/api && npm install --production
 RUN cd apps/api && npm i --save-dev @types/node && npm run build
 
