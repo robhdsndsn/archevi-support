@@ -22,3 +22,5 @@ lib/
 apps/api/node_modules
 apps/api/dist
 apps/client/node_modules
+apps/client/.next
+.git
