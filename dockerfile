@@ -22,7 +22,6 @@ RUN cd apps/api && npm install --production
 RUN cd apps/api && npm i --save-dev @types/node && npm run build
 
 RUN cd apps/client && yarn install --ignore-scripts --network-timeout 1000000
-RUN cd apps/client && yarn add --dev @types/minimatch --network-timeout 1000000
 RUN cd apps/client && yarn build
 
 FROM node:lts AS runner
