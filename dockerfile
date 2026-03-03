@@ -8,8 +8,9 @@ RUN apt-get update && \
 
 RUN npm i -g prisma
 
-# Copy package manifests and lockfiles first (cache layer)
+# Copy package manifests, lockfiles, and prisma schema (cache layer)
 COPY apps/api/package*.json ./apps/api/
+COPY apps/api/src/prisma/schema.prisma ./apps/api/src/prisma/schema.prisma
 COPY apps/client/package*.json ./apps/client/
 COPY yarn.lock ./apps/client/yarn.lock
 COPY ./ecosystem.config.js ./ecosystem.config.js
@@ -18,7 +19,7 @@ COPY ./ecosystem.config.js ./ecosystem.config.js
 RUN cd apps/api && npm install --production
 RUN cd apps/client && yarn install --frozen-lockfile --network-timeout 1000000
 
-# Copy source code
+# Copy source code (overwrites manifests but that's fine)
 COPY apps/api ./apps/api
 COPY apps/client ./apps/client
 
