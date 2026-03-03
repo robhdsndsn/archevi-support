@@ -254,7 +254,7 @@ function GmailSettings({ setStep }: { setStep: (step: number) => void }) {
                   type="text"
                   name="client_id"
                   id="client_id"
-                  className="flex-1 text-foreground text-sm bg-transparent focus:ring-green-500 focus:border-green-500 block w-full min-w-0 rounded-md"
+                  className="flex-1 text-foreground text-sm bg-transparent focus:ring-ring focus:border-ring block w-full min-w-0 rounded-md"
                   placeholder="Your Client ID"
                   value={clientId}
                   onChange={(e) => setClientId(e.target.value)}
@@ -274,7 +274,7 @@ function GmailSettings({ setStep }: { setStep: (step: number) => void }) {
                   type="text"
                   name="client_secret"
                   id="client_secret"
-                  className="flex-1 text-foreground text-sm bg-transparent focus:ring-green-500 focus:border-green-500 block w-full min-w-0 rounded-md"
+                  className="flex-1 text-foreground text-sm bg-transparent focus:ring-ring focus:border-ring block w-full min-w-0 rounded-md"
                   placeholder="Your Client Secret"
                   value={clientSecret}
                   onChange={(e) => setClientSecret(e.target.value)}
@@ -294,7 +294,7 @@ function GmailSettings({ setStep }: { setStep: (step: number) => void }) {
                   type="email"
                   name="user_email"
                   id="user_email"
-                  className="flex-1 text-foreground text-sm bg-transparent focus:ring-green-500 focus:border-green-500 block w-full min-w-0 rounded-md"
+                  className="flex-1 text-foreground text-sm bg-transparent focus:ring-ring focus:border-ring block w-full min-w-0 rounded-md"
                   placeholder="Your Email"
                   value={user}
                   onChange={(e) => setUser(e.target.value)}
@@ -314,7 +314,7 @@ function GmailSettings({ setStep }: { setStep: (step: number) => void }) {
                   type="text"
                   name="redirect_uri"
                   id="redirect_uri"
-                  className="flex-1 text-foreground text-sm bg-transparent focus:ring-green-500 focus:border-green-500 block w-full min-w-0 rounded-md"
+                  className="flex-1 text-foreground text-sm bg-transparent focus:ring-ring focus:border-ring block w-full min-w-0 rounded-md"
                   placeholder="Your Redirect URI"
                   value={redirectUri}
                   onChange={(e) => setRedirectUri(e.target.value)}

@@ -824,7 +824,7 @@ export default function Ticket() {
                         </>
                       ) : (
                         <div className="">
-                          <div className="break-words bg-white rounded-md text-black">
+                          <div className="break-words bg-card rounded-md text-foreground">
                             <Frame
                               className="min-h-[60vh] h-full max-h-[80vh] overflow-y-auto w-full"
                               initialContent={data.ticket.detail}
@@ -968,7 +968,7 @@ export default function Ticket() {
                                   id="comment"
                                   name="comment"
                                   rows={3}
-                                  className="block w-full bg-secondary/50 dark:bg-secondary/50 rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-background focus:ring-0 focus:ring-inset focus:ring-gray-900 sm:text-sm sm:leading-6"
+                                  className="block w-full bg-secondary/50 dark:bg-secondary/50 rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-background focus:ring-0 focus:ring-inset focus:ring-ring sm:text-sm sm:leading-6"
                                   placeholder={
                                     data.ticket.locked
                                       ? "This ticket is locked"
@@ -988,7 +988,7 @@ export default function Ticket() {
                                       className={`${
                                         publicComment
                                           ? "bg-blue-600"
-                                          : "bg-gray-200"
+                                          : "bg-muted"
                                       } relative inline-flex h-6 w-11 items-center rounded-full`}
                                     >
                                       <span className="sr-only">
@@ -999,7 +999,7 @@ export default function Ticket() {
                                           publicComment
                                             ? "translate-x-6"
                                             : "translate-x-1"
-                                        } inline-block h-4 w-4 transform rounded-full bg-white transition`}
+                                        } inline-block h-4 w-4 transform rounded-full bg-background transition`}
                                       />
                                     </Switch>
                                     <Tooltip content="Enabling this will mean the email registered to the ticket will get a reply based on your comment.">
@@ -1020,9 +1020,9 @@ export default function Ticket() {
                                     disabled={data.ticket.locked}
                                     className={`inline-flex justify-center items-center gap-x-1.5 rounded-md ${
                                       data.ticket.locked
-                                        ? "bg-gray-300 cursor-not-allowed"
-                                        : "bg-white hover:bg-gray-50"
-                                    } px-3 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300`}
+                                        ? "bg-muted cursor-not-allowed"
+                                        : "bg-card hover:bg-muted"
+                                    } px-3 py-1.5 text-sm font-semibold text-foreground shadow-sm ring-1 ring-inset ring-border`}
                                   >
                                     <CheckCircleIcon
                                       className="-ml-0.5 h-5 w-5 text-red-500"
@@ -1043,9 +1043,9 @@ export default function Ticket() {
                                     disabled={data.ticket.locked}
                                     className={`inline-flex justify-center gap-x-1.5 rounded-md ${
                                       data.ticket.locked
-                                        ? "bg-gray-300 cursor-not-allowed"
-                                        : "bg-white hover:bg-gray-50"
-                                    } px-3 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300`}
+                                        ? "bg-muted cursor-not-allowed"
+                                        : "bg-card hover:bg-muted"
+                                    } px-3 py-1.5 text-sm font-semibold text-foreground shadow-sm ring-1 ring-inset ring-border`}
                                   >
                                     <CheckCircleIcon
                                       className="-ml-0.5 h-5 w-5 text-green-500"
@@ -1058,10 +1058,10 @@ export default function Ticket() {
                                   onClick={() => addComment()}
                                   type="submit"
                                   disabled={data.ticket.locked}
-                                  className={`inline-flex items-center justify-center rounded-md px-4 py-1.5 text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900 ${
+                                  className={`inline-flex items-center justify-center rounded-md px-4 py-1.5 text-sm font-semibold text-primary-foreground shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring ${
                                     data.ticket.locked
-                                      ? "bg-gray-400 cursor-not-allowed"
-                                      : "bg-gray-900 hover:bg-gray-700"
+                                      ? "bg-muted-foreground cursor-not-allowed"
+                                      : "bg-primary hover:bg-primary/90"
                                   }`}
                                 >
                                   {t("comment")}
@@ -1106,15 +1106,15 @@ export default function Ticket() {
                       disabled={data.ticket.locked}
                     />
 
-                    {/* <div className="border-t border-gray-200">
+                    {/* <div className="border-t border-border">
                   <div className="flex flex-row items-center justify-between mt-2">
-                    <span className="text-sm font-medium text-gray-500 dark:text-white">
+                    <span className="text-sm font-medium text-muted-foreground dark:text-white">
                       Time Tracking
                     </span>
                     {!editTime ? (
                       <button
                         onClick={() => setTimeEdit(true)}
-                        className="text-sm font-medium text-gray-500 hover:underline dark:text-white"
+                        className="text-sm font-medium text-muted-foreground hover:underline dark:text-white"
                       >
                         add
                       </button>
@@ -1124,7 +1124,7 @@ export default function Ticket() {
                           setTimeEdit(false);
                           addTime();
                         }}
-                        className="text-sm font-medium text-gray-500 hover:underline dark:text-white"
+                        className="text-sm font-medium text-muted-foreground hover:underline dark:text-white"
                       >
                         save
                       </button>
@@ -1153,7 +1153,7 @@ export default function Ticket() {
                           type="text"
                           name="text"
                           id="timespent_text"
-                          className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                          className="block w-full rounded-md border-0 py-1.5 text-foreground shadow-sm ring-1 ring-inset ring-border placeholder:text-muted-foreground focus:ring-2 focus:ring-inset focus:ring-ring sm:text-sm sm:leading-6"
                           placeholder="What did you do?"
                           value={timeReason}
                           onChange={(e) => setTimeReason(e.target.value)}
@@ -1162,7 +1162,7 @@ export default function Ticket() {
                           type="number"
                           name="number"
                           id="timespent"
-                          className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                          className="block w-full rounded-md border-0 py-1.5 text-foreground shadow-sm ring-1 ring-inset ring-border placeholder:text-muted-foreground focus:ring-2 focus:ring-inset focus:ring-ring sm:text-sm sm:leading-6"
                           placeholder="Time in minutes"
                           value={timeSpent}
                           onChange={(e) => setTimeSpent(e.target.value)}
@@ -1171,13 +1171,13 @@ export default function Ticket() {
                     </div>
                   )}
                 </div> */}
-                    {/* <div className="border-t border-gray-200">
+                    {/* <div className="border-t border-border">
                   <div className="flex flex-row items-center justify-between mt-2">
-                    <span className="text-sm font-medium text-gray-500 dark:text-white">
+                    <span className="text-sm font-medium text-muted-foreground dark:text-white">
                       Attachments
                     </span>
                     <button
-                      className="text-sm font-medium text-gray-500 hover:underline dark:text-white"
+                      className="text-sm font-medium text-muted-foreground hover:underline dark:text-white"
                       onClick={handleButtonClick}
                     >
                       upload
@@ -1194,7 +1194,7 @@ export default function Ticket() {
                   <>
                     {data.ticket.files.length > 0 &&
                       data.ticket.files.map((file: any) => (
-                        <div className="p-1/2 px-1  hover:bg-gray-200 hover:cursor-pointer">
+                        <div className="p-1/2 px-1  hover:bg-muted hover:cursor-pointer">
                           <span className="text-xs">{file.filename}</span>
                         </div>
                       ))}

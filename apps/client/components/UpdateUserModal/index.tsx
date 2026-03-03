@@ -48,7 +48,7 @@ export default function UpdateUserModal({ user }) {
       <button
         onClick={() => setOpen(true)}
         type="button"
-        className="inline-flex items-center px-4 py-1.5 border font-semibold border-gray-300 shadow-sm text-xs rounded text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+        className="inline-flex items-center px-4 py-1.5 border font-semibold border-input shadow-sm text-xs rounded text-foreground bg-card hover:bg-muted focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-ring"
       >
         Role
       </button>
@@ -69,7 +69,7 @@ export default function UpdateUserModal({ user }) {
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >
-              <Dialog.Overlay className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
+              <Dialog.Overlay className="fixed inset-0 bg-muted-foreground bg-opacity-75 transition-opacity" />
             </Transition.Child>
 
             <span
@@ -87,11 +87,11 @@ export default function UpdateUserModal({ user }) {
               leaveFrom="opacity-100 translate-y-0 sm:scale-100"
               leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             >
-              <div className="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full sm:p-6">
+              <div className="inline-block align-bottom bg-card rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full sm:p-6">
                 <div className="hidden sm:block absolute top-0 right-0 pt-4 pr-4">
                   <button
                     type="button"
-                    className="bg-white rounded-md text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                    className="bg-card rounded-md text-muted-foreground hover:text-foreground focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-ring"
                     onClick={() => setOpen(false)}
                   >
                     <span className="sr-only">Close</span>
@@ -102,7 +102,7 @@ export default function UpdateUserModal({ user }) {
                   <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left w-full">
                     <Dialog.Title
                       as="h3"
-                      className="text-lg leading-6 font-medium text-gray-900"
+                      className="text-lg leading-6 font-medium text-foreground"
                     >
                       Edit User Role
                     </Dialog.Title>
@@ -115,8 +115,8 @@ export default function UpdateUserModal({ user }) {
                               type="button"
                               className={
                                 admin === false
-                                  ? "relative inline-flex items-center px-4 py-2 border border-gray-300 bg-green-500 text-sm font-medium text-white hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1"
-                                  : "relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1"
+                                  ? "relative inline-flex items-center px-4 py-2 border border-input bg-primary text-sm font-medium text-primary-foreground hover:bg-muted focus:z-10 focus:outline-none focus:ring-1"
+                                  : "relative inline-flex items-center px-4 py-2 border border-input bg-card text-sm font-medium text-foreground hover:bg-muted focus:z-10 focus:outline-none focus:ring-1"
                               }
                             >
                               User
@@ -126,8 +126,8 @@ export default function UpdateUserModal({ user }) {
                               type="button"
                               className={
                                 admin === true
-                                  ? "relative inline-flex items-center px-4 py-2 border border-gray-300 bg-green-500 text-sm font-medium text-white hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1"
-                                  : "relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1"
+                                  ? "relative inline-flex items-center px-4 py-2 border border-input bg-primary text-sm font-medium text-primary-foreground hover:bg-muted focus:z-10 focus:outline-none focus:ring-1"
+                                  : "relative inline-flex items-center px-4 py-2 border border-input bg-card text-sm font-medium text-foreground hover:bg-muted focus:z-10 focus:outline-none focus:ring-1"
                               }
                             >
                               Admin
@@ -141,7 +141,7 @@ export default function UpdateUserModal({ user }) {
                 <div className="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
                   <button
                     type="button"
-                    className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-600 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:ml-3 sm:w-auto sm:text-sm"
+                    className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-primary text-base font-medium text-primary-foreground hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-ring sm:ml-3 sm:w-auto sm:text-sm"
                     onClick={async () => {
                       await updateUser();
                     }}

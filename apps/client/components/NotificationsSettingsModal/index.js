@@ -102,13 +102,13 @@ export default function NotificationsSettingsModal() {
               leaveFrom="opacity-100 translate-y-0 sm:scale-100"
               leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             >
-              <div className="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-3xl sm:w-full sm:p-6">
-                <div className="flex flex-row w-full border-b border-gray-300">
+              <div className="inline-block align-bottom bg-card rounded-lg px-4 pt-5 pb-4 text-left shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-3xl sm:w-full sm:p-6">
+                <div className="flex flex-row w-full border-b border-input">
                   <span className="text-md pb-2 font-bold">Email Settings</span>
 
                   <button
                     type="button"
-                    className="ml-auto mb-1.5 bg-white text-xs rounded-md text-gray-400 hover:text-gray-500 "
+                    className="ml-auto mb-1.5 bg-card text-xs rounded-md text-muted-foreground hover:text-foreground "
                     onClick={() => setOpen(false)}
                   >
                     <span className="sr-only">Close</span>
@@ -119,7 +119,7 @@ export default function NotificationsSettingsModal() {
                 <div className="space-y-1 mt-4 mb-4">
                   <label
                     htmlFor="smtp"
-                    className="block text-sm font-medium text-gray-700"
+                    className="block text-sm font-medium text-foreground"
                   >
                     SMTP Host
                   </label>
@@ -128,14 +128,14 @@ export default function NotificationsSettingsModal() {
                       type="text"
                       name="smtp"
                       id="smtp"
-                      className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                      className="block w-full rounded-md border-input shadow-sm focus:border-ring focus:ring-ring sm:text-sm"
                       placeholder=""
                       onChange={(e) => setHost(e.target.value)}
                     />
                   </div>
                   <label
                     htmlFor="reply"
-                    className="block text-sm font-medium text-gray-700"
+                    className="block text-sm font-medium text-foreground"
                   >
                     Reply From
                   </label>
@@ -144,14 +144,14 @@ export default function NotificationsSettingsModal() {
                       type="email"
                       name="reply"
                       id="reply"
-                      className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                      className="block w-full rounded-md border-input shadow-sm focus:border-ring focus:ring-ring sm:text-sm"
                       placeholder="noreply@archevi.com"
                       onChange={(e) => setReply(e.target.value)}
                     />
                   </div>
                   <label
                     htmlFor="port"
-                    className="block text-sm font-medium text-gray-700"
+                    className="block text-sm font-medium text-foreground"
                   >
                     Port
                   </label>
@@ -160,14 +160,14 @@ export default function NotificationsSettingsModal() {
                       type="text"
                       name="port"
                       id="port"
-                      className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                      className="block w-full rounded-md border-input shadow-sm focus:border-ring focus:ring-ring sm:text-sm"
                       placeholder="403"
                       onChange={(e) => setPort(e.target.value)}
                     />
                   </div>
                   <label
                     htmlFor="email"
-                    className="block text-sm font-medium text-gray-700"
+                    className="block text-sm font-medium text-foreground"
                   >
                     Username
                   </label>
@@ -176,14 +176,14 @@ export default function NotificationsSettingsModal() {
                       type="email"
                       name="email"
                       id="email"
-                      className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                      className="block w-full rounded-md border-input shadow-sm focus:border-ring focus:ring-ring sm:text-sm"
                       placeholder=""
                       onChange={(e) => setUsername(e.target.value)}
                     />
                   </div>
                   <label
                     htmlFor="password"
-                    className="block text-sm font-medium text-gray-700"
+                    className="block text-sm font-medium text-foreground"
                   >
                     Password
                   </label>
@@ -192,7 +192,7 @@ export default function NotificationsSettingsModal() {
                       type="password"
                       name="password"
                       id="password"
-                      className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                      className="block w-full rounded-md border-input shadow-sm focus:border-ring focus:ring-ring sm:text-sm"
                       placeholder=""
                       onChange={(e) => setPassword(e.target.value)}
                     />
@@ -200,14 +200,14 @@ export default function NotificationsSettingsModal() {
                 </div>
 
                 <div className="mt-2">
-                  <div className="border-t border-gray-300 ">
+                  <div className="border-t border-input ">
                     <div className="mt-2 float-right">
                       <button
                         onClick={() => {
                           postData();
                         }}
                         type="button"
-                        className="inline-flex justify-center rounded-md shadow-sm px-2.5 py-1.5 border border-transparent text-xs bg-green-600 font-medium text-white hover:bg-green-700 focus:outline-none "
+                        className="inline-flex justify-center rounded-md shadow-sm px-2.5 py-1.5 border border-transparent text-xs bg-primary font-medium text-primary-foreground hover:bg-primary/90 focus:outline-none "
                       >
                         Save
                       </button>

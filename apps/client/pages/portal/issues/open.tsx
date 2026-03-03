@@ -47,7 +47,7 @@ export default function Tickets() {
       {status === "success" && (
         <div>
           <div className="flex flex-col">
-            <div className="py-2 px-6 flex flex-row items-center justify-between bg-gray-200 dark:bg-[#0A090C] border-b-[1px]">
+            <div className="py-2 px-6 flex flex-row items-center justify-between bg-muted dark:bg-background border-b-[1px]">
               <span className="text-sm font-bold">
                 You have {data.tickets.length} open ticket
                 {data.tickets.length > 1 ? "'s" : ""}
@@ -70,7 +70,7 @@ export default function Tickets() {
 
                 return (
                   <Link href={`/portal/issue/${ticket.id}`}>
-                    <div className="flex flex-row w-full bg-white dark:bg-[#0A090C] dark:hover:bg-green-600 border-b-[1px] p-2 justify-between px-6 hover:bg-gray-100">
+                    <div className="flex flex-row w-full bg-card dark:bg-background dark:hover:bg-primary/90 border-b-[1px] p-2 justify-between px-6 hover:bg-muted">
                       <div className="flex flex-row space-x-2 items-center">
                         <span className="text-xs font-semibold">
                           #{ticket.Number}
@@ -89,7 +89,7 @@ export default function Tickets() {
                         >
                           {ticket.priority}
                         </span>
-                        <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-gray-500">
+                        <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-muted-foreground">
                           <span className="text-[11px] font-medium leading-none text-white uppercase">
                             {ticket.assignedTo ? ticket.assignedTo.name[0] : ""}
                           </span>
@@ -103,13 +103,13 @@ export default function Tickets() {
               <div className="min-h-screen flex items-center justify-center">
                 <button
                   type="button"
-                  className="relative block w-[400px] rounded-lg border-2 border-dashed border-gray-300 p-12 text-center hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                  className="relative block w-[400px] rounded-lg border-2 border-dashed border-input p-12 text-center hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
                   onClick={() => {
                     router.push("/portal/new");
                   }}
                 >
                   <svg
-                    className="mx-auto h-12 w-12 text-gray-400"
+                    className="mx-auto h-12 w-12 text-muted-foreground"
                     stroke="currentColor"
                     fill="none"
                     viewBox="0 0 48 48"
@@ -122,7 +122,7 @@ export default function Tickets() {
                       d="M8 14v20c0 4.418 7.163 8 16 8 1.381 0 2.721-.087 4-.252M8 14c0 4.418 7.163 8 16 8s16-3.582 16-8M8 14c0-4.418 7.163-8 16-8s16 3.582 16 8m0 0v14m0-4c0 4.418-7.163 8-16 8S8 28.418 8 24m32 10v6m0 0v6m0-6h6m-6 0h-6"
                     />
                   </svg>
-                  <span className="mt-2 block text-sm font-semibold text-gray-900">
+                  <span className="mt-2 block text-sm font-semibold text-foreground">
                     Create your first isssue
                   </span>
                 </button>

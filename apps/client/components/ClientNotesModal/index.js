@@ -30,7 +30,7 @@ export default function ClientNotesModal({ notes, id }) {
     <div>
       <button
         type="button"
-        className="w-full flex  px-4 py-2  text-sm group-hover:text-gray-500 hover:bg-gray-100 "
+        className="w-full flex  px-4 py-2  text-sm group-hover:text-foreground hover:bg-muted "
         onClick={() => setOpen(true)}
       >
         Notes
@@ -70,11 +70,11 @@ export default function ClientNotesModal({ notes, id }) {
               leaveFrom="opacity-100 translate-y-0 sm:scale-100"
               leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             >
-              <div className="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-5xl sm:w-full sm:p-6">
+              <div className="inline-block align-bottom bg-card rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-5xl sm:w-full sm:p-6">
                 <div className="hidden sm:block absolute top-0 right-0 pt-4 pr-4">
                   <button
                     type="button"
-                    className="bg-white rounded-md text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                    className="bg-card rounded-md text-muted-foreground hover:text-foreground focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-ring"
                     onClick={() => setOpen(false)}
                   >
                     <span className="sr-only">Close</span>
@@ -84,7 +84,7 @@ export default function ClientNotesModal({ notes, id }) {
                   <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left w-full">
                     <Dialog.Title
                       as="h3"
-                      className="text-lg leading-6 font-medium text-gray-900"
+                      className="text-lg leading-6 font-medium text-foreground"
                     >
                       Client Notes
                     </Dialog.Title>
@@ -102,7 +102,7 @@ export default function ClientNotesModal({ notes, id }) {
                         <button
                           onClick={() => postMarkdown()}
                           type="button"
-                          className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+                          className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-primary-foreground bg-primary hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-ring"
                         >
                           Save
                         </button>

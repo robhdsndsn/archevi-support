@@ -24,7 +24,7 @@ const fetchALLTIckets = async () => {
 function DefaultColumnFilter({ column: { filterValue, setFilter } }: any) {
   return (
     <input
-      className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+      className="shadow-sm focus:ring-ring focus:border-ring block w-full sm:text-sm border-input rounded-md"
       type="text"
       value={filterValue || ""}
       onChange={(e) => {
@@ -105,12 +105,12 @@ function Table({ columns, data }: any) {
   return (
     <div className="overflow-x-auto md:-mx-6 lg:-mx-8">
       <div className="py-2 align-middle inline-block min-w-full md:px-6 lg:px-8">
-        <div className="shadow overflow-hidden border-b border-gray-200 md:rounded-lg">
+        <div className="shadow overflow-hidden border-b border-border md:rounded-lg">
           <table
             {...getTableProps()}
-            className="min-w-full divide-y divide-gray-200"
+            className="min-w-full divide-y divide-border"
           >
-            <thead className="bg-gray-50">
+            <thead className="bg-muted">
               {headerGroups.map((headerGroup: any) => (
                 <tr
                   {...headerGroup.getHeaderGroupProps()}
@@ -120,7 +120,7 @@ function Table({ columns, data }: any) {
                     column.hideHeader === false ? null : (
                       <th
                         {...column.getHeaderProps()}
-                        className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                        className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider"
                       >
                         {column.render("Header")}
                         {/* Render the columns filter UI */}
@@ -137,10 +137,10 @@ function Table({ columns, data }: any) {
               {page.map((row: any, i: any) => {
                 prepareRow(row);
                 return (
-                  <tr {...row.getRowProps()} className="bg-white">
+                  <tr {...row.getRowProps()} className="bg-card">
                     {row.cells.map((cell: any) => (
                       <td
-                        className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"
+                        className="px-6 py-4 whitespace-nowrap text-sm font-medium text-foreground"
                         {...cell.getCellProps()}
                       >
                         {cell.render("Cell")}
@@ -154,18 +154,18 @@ function Table({ columns, data }: any) {
 
           {data.length > 10 && (
             <nav
-              className="bg-white px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6"
+              className="bg-card px-4 py-3 flex items-center justify-between border-t border-border sm:px-6"
               aria-label="Pagination"
             >
               <div className="hidden sm:block">
                 <div className="flex flex-row flex-nowrap w-full space-x-2">
-                  <p className="block text-sm font-medium text-gray-700 mt-4">
+                  <p className="block text-sm font-medium text-foreground mt-4">
                     Show
                   </p>
                   <select
                     id="location"
                     name="location"
-                    className="block w-full pl-3 pr-10 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
+                    className="block w-full pl-3 pr-10 text-base border-input focus:outline-none focus:ring-ring focus:border-ring sm:text-sm rounded-md"
                     value={pageSize}
                     onChange={(e) => {
                       setPageSize(Number(e.target.value));
@@ -181,7 +181,7 @@ function Table({ columns, data }: any) {
               </div>
               <div className="flex-1 flex justify-between sm:justify-end">
                 <button
-                  className="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
+                  className="relative inline-flex items-center px-4 py-2 border border-input text-sm font-medium rounded-md text-foreground bg-card hover:bg-muted"
                   type="button"
                   onClick={() => previousPage()}
                   disabled={!canPreviousPage}
@@ -189,7 +189,7 @@ function Table({ columns, data }: any) {
                   Previous
                 </button>
                 <button
-                  className="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
+                  className="ml-3 relative inline-flex items-center px-4 py-2 border border-input text-sm font-medium rounded-md text-foreground bg-card hover:bg-muted"
                   type="button"
                   onClick={() => nextPage()}
                   disabled={!canNextPage}
@@ -332,12 +332,12 @@ export default function Clients() {
       <div className="relative max-w-4xl mx-auto md:px-8 xl:px-0">
         <div className="pt-10 pb-16 divide-y-2">
           <div className="px-4 sm:px-6 md:px-0">
-            <h1 className="text-3xl font-extrabold text-gray-900">Tickets</h1>
+            <h1 className="text-3xl font-extrabold text-foreground">Tickets</h1>
           </div>
           <div className="px-4 sm:px-6 md:px-0">
             <div className="sm:flex sm:items-center">
               <div className="sm:flex-auto mt-4">
-                <p className="mt-2 text-sm text-gray-700">
+                <p className="mt-2 text-sm text-muted-foreground">
                   A list of all your organisation's tickets, regardless of
                   status.
                 </p>
@@ -377,7 +377,7 @@ export default function Clients() {
                       <div className="text-center mt-72">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
-                          className="mx-auto h-12 w-12 text-gray-400"
+                          className="mx-auto h-12 w-12 text-muted-foreground"
                           fill="none"
                           viewBox="0 0 24 24"
                           stroke="currentColor"
@@ -390,7 +390,7 @@ export default function Clients() {
                           />
                         </svg>
 
-                        <h3 className="mt-2 text-sm font-medium text-gray-900">
+                        <h3 className="mt-2 text-sm font-medium text-foreground">
                           You currently don't have any assigned tickets. :)
                         </h3>
                       </div>

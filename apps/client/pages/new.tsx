@@ -126,14 +126,14 @@ export default function CreateTicket() {
   }, []);
 
   return (
-    <div className="h-full bg-white dark:bg-[#0A090C]">
+    <div className="h-full bg-background">
       <div className="w-full border-b-[1px] p-2 flex flex-row justify-between items-center">
         <div className="flex flex-row space-x-4">
           <Listbox value={company} onChange={setCompany}>
             {({ open }) => (
               <>
                 <div className="relative">
-                  <Listbox.Button className="relative w-full min-w-[172px] cursor-default rounded-md bg-white dark:bg-[#0A090C] dark:text-white py-1 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                  <Listbox.Button className="relative w-full min-w-[172px] cursor-default rounded-md bg-background py-1 pl-3 pr-10 text-left text-foreground shadow-sm ring-1 ring-inset ring-input focus:outline-none focus:ring-2 focus:ring-ring sm:text-sm sm:leading-6">
                     <span className="block truncate">
                       {company === undefined
                         ? t("select_a_client")
@@ -143,7 +143,7 @@ export default function CreateTicket() {
                     </span>
                     <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                       <ChevronUpDownIcon
-                        className="h-5 w-5 text-gray-400"
+                        className="h-5 w-5 text-muted-foreground"
                         aria-hidden="true"
                       />
                     </span>
@@ -156,13 +156,13 @@ export default function CreateTicket() {
                     leaveFrom="opacity-100"
                     leaveTo="opacity-0"
                   >
-                    <Listbox.Options className="absolute z-10  max-h-60 w-full overflow-auto rounded-md bg-white dark:bg-[#0A090C] dark:text-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+                    <Listbox.Options className="absolute z-10  max-h-60 w-full overflow-auto rounded-md bg-background py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
                       <Listbox.Option
                         className={({ active }) =>
                           classNames(
                             active
-                              ? "bg-indigo-600 text-white"
-                              : "text-gray-900 dark:text-white",
+                              ? "bg-primary text-primary-foreground"
+                              : "text-foreground",
                             "relative cursor-default select-none py-2 pl-3 pr-9"
                           )
                         }
@@ -182,7 +182,7 @@ export default function CreateTicket() {
                             {selected ? (
                               <span
                                 className={classNames(
-                                  active ? "text-white" : "text-indigo-600",
+                                  active ? "text-white" : "text-primary",
                                   "absolute inset-y-0 right-0 flex items-center pr-4"
                                 )}
                               >
@@ -202,8 +202,8 @@ export default function CreateTicket() {
                             className={({ active }) =>
                               classNames(
                                 active
-                                  ? "bg-indigo-600 text-white"
-                                  : "text-gray-900 dark:text-white",
+                                  ? "bg-primary text-primary-foreground"
+                                  : "text-foreground",
                                 "relative cursor-default select-none py-2 pl-3 pr-9"
                               )
                             }
@@ -223,7 +223,7 @@ export default function CreateTicket() {
                                 {selected ? (
                                   <span
                                     className={classNames(
-                                      active ? "text-white" : "text-indigo-600",
+                                      active ? "text-white" : "text-primary",
                                       "absolute inset-y-0 right-0 flex items-center pr-4"
                                     )}
                                   >
@@ -247,7 +247,7 @@ export default function CreateTicket() {
             {({ open }) => (
               <>
                 <div className="relative">
-                  <Listbox.Button className="relative w-full min-w-[172px] cursor-default rounded-md bg-white dark:bg-[#0A090C] dark:text-white py-1 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                  <Listbox.Button className="relative w-full min-w-[172px] cursor-default rounded-md bg-background py-1 pl-3 pr-10 text-left text-foreground shadow-sm ring-1 ring-inset ring-input focus:outline-none focus:ring-2 focus:ring-ring sm:text-sm sm:leading-6">
                     <span className="block truncate">
                       {engineer === undefined
                         ? t("select_an_engineer")
@@ -255,7 +255,7 @@ export default function CreateTicket() {
                     </span>
                     <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                       <ChevronUpDownIcon
-                        className="h-5 w-5 text-gray-400"
+                        className="h-5 w-5 text-muted-foreground"
                         aria-hidden="true"
                       />
                     </span>
@@ -268,13 +268,13 @@ export default function CreateTicket() {
                     leaveFrom="opacity-100"
                     leaveTo="opacity-0"
                   >
-                    <Listbox.Options className="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white dark:bg-[#0A090C] dark:text-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+                    <Listbox.Options className="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-background py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
                       <Listbox.Option
                         className={({ active }) =>
                           classNames(
                             active
-                              ? "bg-indigo-600 text-white"
-                              : "text-gray-900 dark:text-white",
+                              ? "bg-primary text-primary-foreground"
+                              : "text-foreground",
                             "relative cursor-default select-none py-2 pl-3 pr-9"
                           )
                         }
@@ -294,7 +294,7 @@ export default function CreateTicket() {
                             {selected ? (
                               <span
                                 className={classNames(
-                                  active ? "text-white" : "text-indigo-600",
+                                  active ? "text-white" : "text-primary",
                                   "absolute inset-y-0 right-0 flex items-center pr-4"
                                 )}
                               >
@@ -314,8 +314,8 @@ export default function CreateTicket() {
                             className={({ active }) =>
                               classNames(
                                 active
-                                  ? "bg-indigo-600 text-white"
-                                  : "text-gray-900 dark:text-white",
+                                  ? "bg-primary text-primary-foreground"
+                                  : "text-foreground",
                                 "relative cursor-default select-none py-2 pl-3 pr-9"
                               )
                             }
@@ -335,7 +335,7 @@ export default function CreateTicket() {
                                 {selected ? (
                                   <span
                                     className={classNames(
-                                      active ? "text-white" : "text-indigo-600",
+                                      active ? "text-white" : "text-primary",
                                       "absolute inset-y-0 right-0 flex items-center pr-4"
                                     )}
                                   >
@@ -359,11 +359,11 @@ export default function CreateTicket() {
             {({ open }) => (
               <>
                 <div className="relative">
-                  <Listbox.Button className="relative w-full min-w-[172px] cursor-default rounded-md bg-white dark:bg-[#0A090C] dark:text-white py-1 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none sm:text-sm sm:leading-6">
+                  <Listbox.Button className="relative w-full min-w-[172px] cursor-default rounded-md bg-background py-1 pl-3 pr-10 text-left text-foreground shadow-sm ring-1 ring-inset ring-input focus:outline-none sm:text-sm sm:leading-6">
                     <span className="block truncate">{selected.name}</span>
                     <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                       <ChevronUpDownIcon
-                        className="h-5 w-5 text-gray-400"
+                        className="h-5 w-5 text-muted-foreground"
                         aria-hidden="true"
                       />
                     </span>
@@ -376,15 +376,15 @@ export default function CreateTicket() {
                     leaveFrom="opacity-100"
                     leaveTo="opacity-0"
                   >
-                    <Listbox.Options className="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white dark:bg-[#0A090C] dark:text-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+                    <Listbox.Options className="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-background py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
                       {type.map((person) => (
                         <Listbox.Option
                           key={person.id}
                           className={({ active }) =>
                             classNames(
                               active
-                                ? "bg-gray-400 text-white"
-                                : "text-gray-900 dark:text-white",
+                                ? "bg-border text-white"
+                                : "text-foreground",
                               "relative cursor-default select-none py-2 pl-3 pr-9"
                             )
                           }
@@ -404,7 +404,7 @@ export default function CreateTicket() {
                               {selected ? (
                                 <span
                                   className={classNames(
-                                    active ? "text-white" : "text-indigo-600",
+                                    active ? "text-white" : "text-primary",
                                     "absolute inset-y-0 right-0 flex items-center pr-4"
                                   )}
                                 >
@@ -429,7 +429,7 @@ export default function CreateTicket() {
           <button
             type="button"
             onClick={() => createTicket()}
-            className="rounded bg-green-600 px-4 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600"
+            className="rounded bg-primary px-4 py-1.5 text-sm font-semibold text-primary-foreground shadow-sm hover:bg-primary/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
           >
             Create Ticket
           </button>
@@ -437,7 +437,7 @@ export default function CreateTicket() {
       </div>
       <div className="flex flex-col xl:flex-row h-full w-full">
         <div className="w-full order-2 xl:order-2">
-          <div className="px-4 border-b border-gray-700">
+          <div className="px-4 border-b border-border">
             <input
               type="text"
               name="title"
@@ -445,16 +445,16 @@ export default function CreateTicket() {
               maxLength={64}
               autoComplete="off"
               onChange={(e) => setTitle(e.target.value)}
-              className="w-full pl-0 pr-0 sm:text-xl border-none dark:bg-[#0A090C] dark:text-white focus:outline-none focus:shadow-none focus:ring-0 focus:border-none"
+              className="w-full pl-0 pr-0 sm:text-xl border-none dark:bg-background dark:text-white focus:outline-none focus:shadow-none focus:ring-0 focus:border-none"
             />
           </div>
           <Editor setIssue={setIssue} />
         </div>
-        <div className="w-full xl:w-1/6 p-3 flex flex-col dark:bg-[#0A090C] dark:text-white border-b-[1px] xl:border-b-0 xl:border-r-[1px] order-1 xl:order-1">
+        <div className="w-full xl:w-1/6 p-3 flex flex-col dark:bg-background dark:text-white border-b-[1px] xl:border-b-0 xl:border-r-[1px] order-1 xl:order-1">
           <div className="flex flex-col">
             <div>
               <label>
-                <span className="block text-sm font-medium text-gray-700 dark:text-white">
+                <span className="block text-sm font-medium text-foreground">
                   Contact Name
                 </span>
               </label>
@@ -465,13 +465,13 @@ export default function CreateTicket() {
                 name="name"
                 autoComplete="off"
                 onChange={(e) => setName(e.target.value)}
-                className="w-full pl-0 pr-0 sm:text-sm border-none focus:outline-none dark:bg-[#0A090C] dark:text-white focus:shadow-none focus:ring-0 focus:border-none"
+                className="w-full pl-0 pr-0 sm:text-sm border-none focus:outline-none dark:bg-background dark:text-white focus:shadow-none focus:ring-0 focus:border-none"
               />
             </div>
 
             <div>
               <label>
-                <span className="block text-sm font-medium text-gray-700 dark:text-white">
+                <span className="block text-sm font-medium text-foreground">
                   Contact Email
                 </span>
               </label>
@@ -480,7 +480,7 @@ export default function CreateTicket() {
                 name="email"
                 placeholder={t("ticket_email_here")}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full pl-0 pr-0 sm:text-sm border-none focus:outline-none dark:bg-[#0A090C] dark:text-white focus:shadow-none focus:ring-0 focus:border-none"
+                className="w-full pl-0 pr-0 sm:text-sm border-none focus:outline-none dark:bg-background dark:text-white focus:shadow-none focus:ring-0 focus:border-none"
               />
             </div>
           </div>

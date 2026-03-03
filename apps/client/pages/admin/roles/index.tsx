@@ -84,7 +84,7 @@ export default function Roles() {
       <div className="flex justify-between mb-4">
         <div className="flex gap-2">
           <button
-            className="px-4 py-2 bg-green-500 text-white rounded"
+            className="px-4 py-2 bg-primary text-primary-foreground rounded"
             onClick={() => {
               router.push("/admin/roles/new");
             }}
@@ -131,7 +131,7 @@ export default function Roles() {
                         <div className="flex items-center gap-2">
                           <strong>{role.name}</strong>
                         </div>
-                        <span className="text-xs text-gray-500">
+                        <span className="text-xs text-muted-foreground">
                           ID: {role.id}
                         </span>
                       </div>

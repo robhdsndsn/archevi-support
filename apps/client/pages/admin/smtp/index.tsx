@@ -163,7 +163,7 @@ export default function Notifications() {
                           <button
                             onClick={() => deleteEmailConfig()}
                             type="button"
-                            className="rounded bg-red-500 text-white px-4 py-2 text-sm font-semibold shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-secondary"
+                            className="rounded bg-red-500 text-white px-4 py-2 text-sm font-semibold shadow-sm ring-1 ring-inset ring-border hover:bg-secondary"
                           >
                             Delete Settings
                           </button>
@@ -219,7 +219,7 @@ export default function Notifications() {
                           <button
                             onClick={() => deleteEmailConfig()}
                             type="button"
-                            className="rounded bg-red-500 text-white px-4 py-2 text-sm font-semibold shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-secondary"
+                            className="rounded bg-red-500 text-white px-4 py-2 text-sm font-semibold shadow-sm ring-1 ring-inset ring-border hover:bg-secondary"
                           >
                             Delete Settings
                           </button>
@@ -372,7 +372,7 @@ function GmailSettings({ setStep }: { setStep: (step: number) => void }) {
                   type="text"
                   name="client_id"
                   id="client_id"
-                  className="flex-1 text-foreground text-sm bg-transparent focus:ring-green-500 focus:border-green-500 block w-full min-w-0 rounded-md"
+                  className="flex-1 text-foreground text-sm bg-transparent focus:ring-ring focus:border-ring block w-full min-w-0 rounded-md"
                   placeholder="Your Client ID"
                   value={clientId}
                   onChange={(e) => setClientId(e.target.value)}
@@ -392,7 +392,7 @@ function GmailSettings({ setStep }: { setStep: (step: number) => void }) {
                   type="text"
                   name="client_secret"
                   id="client_secret"
-                  className="flex-1 text-foreground text-sm bg-transparent focus:ring-green-500 focus:border-green-500 block w-full min-w-0 rounded-md"
+                  className="flex-1 text-foreground text-sm bg-transparent focus:ring-ring focus:border-ring block w-full min-w-0 rounded-md"
                   placeholder="Your Client Secret"
                   value={clientSecret}
                   onChange={(e) => setClientSecret(e.target.value)}
@@ -412,7 +412,7 @@ function GmailSettings({ setStep }: { setStep: (step: number) => void }) {
                   type="email"
                   name="user_email"
                   id="user_email"
-                  className="flex-1 text-foreground text-sm bg-transparent focus:ring-green-500 focus:border-green-500 block w-full min-w-0 rounded-md"
+                  className="flex-1 text-foreground text-sm bg-transparent focus:ring-ring focus:border-ring block w-full min-w-0 rounded-md"
                   placeholder="Your Email"
                   value={user}
                   onChange={(e) => setUser(e.target.value)}
@@ -432,7 +432,7 @@ function GmailSettings({ setStep }: { setStep: (step: number) => void }) {
                   type="text"
                   name="redirect_uri"
                   id="redirect_uri"
-                  className="flex-1 text-foreground text-sm bg-transparent focus:ring-green-500 focus:border-green-500 block w-full min-w-0 rounded-md"
+                  className="flex-1 text-foreground text-sm bg-transparent focus:ring-ring focus:border-ring block w-full min-w-0 rounded-md"
                   placeholder="Your Redirect URI"
                   value={redirectUri}
                   onChange={(e) => setRedirectUri(e.target.value)}
@@ -510,7 +510,7 @@ function SMTP({ setStep }: { setStep: (step: number) => void }) {
                   type="text"
                   name="company_website"
                   id="company_website"
-                  className="flex-1 text-foreground text-sm  bg-transparent focus:ring-green-500 focus:border-green-500 block w-full min-w-0 rounded-md"
+                  className="flex-1 text-foreground text-sm  bg-transparent focus:ring-ring focus:border-ring block w-full min-w-0 rounded-md"
                   placeholder="smtp.gmail.com"
                   value={host}
                   onChange={(e) => setHost(e.target.value)}
@@ -530,7 +530,7 @@ function SMTP({ setStep }: { setStep: (step: number) => void }) {
                   type="email"
                   name="company_website"
                   id="company_website"
-                  className="flex-1 text-foreground text-sm  bg-transparent focus:ring-green-500 focus:border-green-500 block w-full min-w-0 rounded-md"
+                  className="flex-1 text-foreground text-sm  bg-transparent focus:ring-ring focus:border-ring block w-full min-w-0 rounded-md"
                   placeholder="username"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
@@ -550,7 +550,7 @@ function SMTP({ setStep }: { setStep: (step: number) => void }) {
                   type="password"
                   name="company_website"
                   id="company_website"
-                  className="flex-1 text-foreground text-sm  bg-transparent focus:ring-green-500 focus:border-green-500 block w-full min-w-0 rounded-md"
+                  className="flex-1 text-foreground text-sm  bg-transparent focus:ring-ring focus:border-ring block w-full min-w-0 rounded-md"
                   placeholder="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
@@ -570,7 +570,7 @@ function SMTP({ setStep }: { setStep: (step: number) => void }) {
                   type="number"
                   name="company_website"
                   id="company_website"
-                  className="flex-1 text-foreground text-sm  bg-transparent focus:ring-green-500 focus:border-green-500 block w-full min-w-0 rounded-md"
+                  className="flex-1 text-foreground text-sm  bg-transparent focus:ring-ring focus:border-ring block w-full min-w-0 rounded-md"
                   placeholder="465"
                   value={port}
                   onChange={(e) => setPort(e.target.value)}
@@ -590,7 +590,7 @@ function SMTP({ setStep }: { setStep: (step: number) => void }) {
                   type="email"
                   name="company_website"
                   id="company_website"
-                  className="flex-1 text-foreground text-sm  bg-transparent focus:ring-green-500 focus:border-green-500 block w-full min-w-0 rounded-md"
+                  className="flex-1 text-foreground text-sm  bg-transparent focus:ring-ring focus:border-ring block w-full min-w-0 rounded-md"
                   placeholder="reply@example.com"
                   value={reply}
                   onChange={(e) => setReply(e.target.value)}

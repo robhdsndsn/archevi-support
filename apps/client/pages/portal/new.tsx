@@ -93,16 +93,16 @@ export default function ClientTicketNew() {
   }
 
   return (
-    <div className="flex justify-center items-center content-center h-screen bg-gray-100">
+    <div className="flex justify-center items-center content-center h-screen bg-muted">
       {view === "new" ? (
-        <div className="max-w-4xl min-w-[400px] sm:min-w-[600px] shadow-xl bg-white p-12 rounded-md">
+        <div className="max-w-4xl min-w-[400px] sm:min-w-[600px] shadow-xl bg-card p-12 rounded-md">
           <h1 className="font-bold text-2xl">Submit a Ticket</h1>
 
           <div className="my-4 flex flex-col space-y-4">
             <div>
               <label
                 htmlFor="email"
-                className="block text-sm font-medium leading-6 text-gray-900"
+                className="block text-sm font-medium leading-6 text-foreground"
               >
                 Subject
               </label>
@@ -111,7 +111,7 @@ export default function ClientTicketNew() {
                   type="email"
                   name="email"
                   id="email"
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 py-1.5 text-foreground shadow-sm ring-1 ring-inset ring-input placeholder:text-muted-foreground focus:ring-2 focus:ring-inset focus:ring-ring sm:text-sm sm:leading-6"
                   placeholder="I can't login to my account"
                   onChange={(e) => setSubject(e.target.value)}
                   value={subject}
@@ -122,15 +122,15 @@ export default function ClientTicketNew() {
             <Listbox value={selected} onChange={setSelected}>
               {({ open }) => (
                 <>
-                  <Listbox.Label className="block text-sm font-medium leading-6 text-gray-900">
+                  <Listbox.Label className="block text-sm font-medium leading-6 text-foreground">
                     Issue Type
                   </Listbox.Label>
                   <div className="relative mt-2">
-                    <Listbox.Button className="relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none sm:text-sm sm:leading-6">
+                    <Listbox.Button className="relative w-full cursor-default rounded-md bg-card py-1.5 pl-3 pr-10 text-left text-foreground shadow-sm ring-1 ring-inset ring-input focus:outline-none sm:text-sm sm:leading-6">
                       <span className="block truncate">{selected.name}</span>
                       <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                         <ChevronUpDownIcon
-                          className="h-5 w-5 text-gray-400"
+                          className="h-5 w-5 text-muted-foreground"
                           aria-hidden="true"
                         />
                       </span>
@@ -143,15 +143,15 @@ export default function ClientTicketNew() {
                       leaveFrom="opacity-100"
                       leaveTo="opacity-0"
                     >
-                      <Listbox.Options className="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+                      <Listbox.Options className="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-card py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
                         {type.map((person) => (
                           <Listbox.Option
                             key={person.id}
                             className={({ active }) =>
                               classNames(
                                 active
-                                  ? "bg-gray-400 text-white"
-                                  : "text-gray-900",
+                                  ? "bg-border text-white"
+                                  : "text-foreground",
                                 "relative cursor-default select-none py-2 pl-3 pr-9"
                               )
                             }
@@ -171,7 +171,7 @@ export default function ClientTicketNew() {
                                 {selected ? (
                                   <span
                                     className={classNames(
-                                      active ? "text-white" : "text-indigo-600",
+                                      active ? "text-white" : "text-primary",
                                       "absolute inset-y-0 right-0 flex items-center pr-4"
                                     )}
                                   >
@@ -195,15 +195,15 @@ export default function ClientTicketNew() {
             <Listbox value={priority} onChange={setPriority}>
               {({ open }) => (
                 <>
-                  <Listbox.Label className="block text-sm font-medium leading-6 text-gray-900">
+                  <Listbox.Label className="block text-sm font-medium leading-6 text-foreground">
                     Priority
                   </Listbox.Label>
                   <div className="relative mt-2">
-                    <Listbox.Button className="relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none sm:text-sm sm:leading-6">
+                    <Listbox.Button className="relative w-full cursor-default rounded-md bg-card py-1.5 pl-3 pr-10 text-left text-foreground shadow-sm ring-1 ring-inset ring-input focus:outline-none sm:text-sm sm:leading-6">
                       <span className="block truncate">{priority.name}</span>
                       <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                         <ChevronUpDownIcon
-                          className="h-5 w-5 text-gray-400"
+                          className="h-5 w-5 text-muted-foreground"
                           aria-hidden="true"
                         />
                       </span>
@@ -216,15 +216,15 @@ export default function ClientTicketNew() {
                       leaveFrom="opacity-100"
                       leaveTo="opacity-0"
                     >
-                      <Listbox.Options className="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+                      <Listbox.Options className="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-card py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
                         {pri.map((person) => (
                           <Listbox.Option
                             key={person.id}
                             className={({ active }) =>
                               classNames(
                                 active
-                                  ? "bg-gray-400 text-white"
-                                  : "text-gray-900",
+                                  ? "bg-border text-white"
+                                  : "text-foreground",
                                 "relative cursor-default select-none py-2 pl-3 pr-9"
                               )
                             }
@@ -244,7 +244,7 @@ export default function ClientTicketNew() {
                                 {selected ? (
                                   <span
                                     className={classNames(
-                                      active ? "text-white" : "text-indigo-600",
+                                      active ? "text-white" : "text-primary",
                                       "absolute inset-y-0 right-0 flex items-center pr-4"
                                     )}
                                   >
@@ -268,7 +268,7 @@ export default function ClientTicketNew() {
             <div>
               <label
                 htmlFor="comment"
-                className="block text-sm font-medium leading-6 text-gray-900"
+                className="block text-sm font-medium leading-6 text-foreground"
               >
                 Description of Issue
               </label>
@@ -277,7 +277,7 @@ export default function ClientTicketNew() {
                   rows={4}
                   name="comment"
                   id="comment"
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 py-1.5 text-foreground shadow-sm ring-1 ring-inset ring-input placeholder:text-muted-foreground focus:ring-2 focus:ring-inset focus:ring-ring sm:text-sm sm:leading-6"
                   defaultValue={""}
                   placeholder="I think i locked myself out!"
                   onChange={(e) => setDescription(e.target.value)}
@@ -290,7 +290,7 @@ export default function ClientTicketNew() {
               type="button"
               onClick={submitTicket}
               disabled={isLoading}
-              className="rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-500 "
+              className="rounded-md bg-primary px-3 py-2 text-sm font-semibold text-primary-foreground shadow-sm hover:bg-primary/90 "
             >
               Submit Ticket
             </button>
@@ -298,7 +298,7 @@ export default function ClientTicketNew() {
         </div>
       ) : (
         <>
-          <div className="rounded-md bg-green-600 shadow-md p-12">
+          <div className="rounded-md bg-primary shadow-md p-12">
             <div className="flex">
               <div className="flex-shrink-0">
                 <CheckCircleIcon

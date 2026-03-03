@@ -26,7 +26,7 @@ export default function Tickets() {
   return (
     <div>
       <div className="flex flex-col">
-        <div className="py-2 px-6 flex flex-row items-center justify-between bg-gray-200 dark:bg-[#0A090C] border-b-[1px]">
+        <div className="py-2 px-6 flex flex-row items-center justify-between bg-muted dark:bg-background border-b-[1px]">
           <span className="text-sm font-bold">
             You have {user.notifcations.filter((e) => !e.read).length} unread
             notifcations
@@ -39,7 +39,7 @@ export default function Tickets() {
             .map((item) => {
               return (
                 <Link href={`/issue/${item.ticketId}`}>
-                  <div className="flex flex-row w-full bg-white dark:bg-[#0A090C] dark:hover:bg-green-600 border-b-[1px] p-2 justify-between px-6 hover:bg-gray-100">
+                  <div className="flex flex-row w-full bg-card dark:bg-background dark:hover:bg-primary/90 border-b-[1px] p-2 justify-between px-6 hover:bg-muted">
                     <div className="flex flex-row space-x-2 items-center">
                       <span className="text-xs font-semibold">{item.text}</span>
                     </div>
@@ -50,7 +50,7 @@ export default function Tickets() {
                           e.stopPropagation();
                           markasread(item.id);
                         }}
-                        className="inline-flex z-10 items-center px-2.5 py-1.5 border font-semibold border-gray-300 shadow-sm text-xs rounded text-gray-700 bg-white hover:bg-gray-50 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                        className="inline-flex z-10 items-center px-2.5 py-1.5 border font-semibold border-input shadow-sm text-xs rounded text-foreground bg-card hover:bg-muted hover:text-foreground focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-ring"
                       >
                         mark as read
                       </button>

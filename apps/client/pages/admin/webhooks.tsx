@@ -113,7 +113,7 @@ export default function Notifications() {
                              type="button"
                              className={
                                show === "main"
-                                 ? "rounded bg-white px-4 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+                                 ? "rounded bg-card px-4 py-2 text-sm font-semibold text-foreground shadow-sm ring-1 ring-inset ring-border hover:bg-muted"
                                  : "hidden"
                              }
                            >
@@ -125,7 +125,7 @@ export default function Notifications() {
                              className={
                                show === "main"
                                  ? "hidden"
-                                 : "rounded bg-white px-4 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+                                 : "rounded bg-card px-4 py-2 text-sm font-semibold text-foreground shadow-sm ring-1 ring-inset ring-border hover:bg-muted"
                              }
                            >
                              Cancel
@@ -140,7 +140,7 @@ export default function Notifications() {
                           {data.webhooks.map((hook) => (
                             <div
                               key={hook.id}
-                              className="rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm flex items-center space-x-3"
+                              className="rounded-lg border border-input bg-card px-6 py-5 shadow-sm flex items-center space-x-3"
                             >
                               <div className="flex-1 min-w-0">
                                 <p className="text-sm font-medium text-foreground">
@@ -187,7 +187,7 @@ export default function Notifications() {
                             type="text"
                             name="url"
                             id="url"
-                            className="shadow-sm bg-transparent text-foreground border focus:ring-green\-500 focus:border-green-500 block w-full sm:w-1/2 md:w-3/4 sm:text-sm border-gray-300 rounded-md"
+                            className="shadow-sm bg-transparent text-foreground border focus:ring-ring focus:border-ring block w-full sm:w-1/2 md:w-3/4 sm:text-sm border-input rounded-md"
                             required
                             onChange={(e) => setName(e.target.value)}
                           />
@@ -204,7 +204,7 @@ export default function Notifications() {
                             type="text"
                             name="url"
                             id="url"
-                            className="shadow-sm bg-transparent text-foreground border focus:ring-green\-500  focus:border-green-500 block w-full sm:w-1/2 md:w-3/4 sm:text-sm border-gray-300 rounded-md"
+                            className="shadow-sm bg-transparent text-foreground border focus:ring-ring focus:border-ring block w-full sm:w-1/2 md:w-3/4 sm:text-sm border-input rounded-md"
                             required
                             onChange={(e) => setUrl(e.target.value)}
                           />
@@ -220,7 +220,7 @@ export default function Notifications() {
                           <select
                             id="location"
                             name="location"
-                            className="mt-1 block w-full pl-3 pr-10 bg-transparent border py-2 text-foreground text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
+                            className="mt-1 block w-full pl-3 pr-10 bg-transparent border py-2 text-foreground text-base border-input focus:outline-none focus:ring-ring focus:border-ring sm:text-sm rounded-md"
                             defaultValue="ticket_created"
                             onChange={(e) => setType(e.target.value)}
                           >
@@ -250,8 +250,8 @@ export default function Notifications() {
                                 checked={enabled}
                                 onChange={setEnabled}
                                 className={classNames(
-                                  enabled ? "bg-green-600" : "bg-gray-200",
-                                  "relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+                                  enabled ? "bg-primary" : "bg-muted",
+                                  "relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-ring"
                                 )}
                               >
                                 <span
@@ -271,7 +271,7 @@ export default function Notifications() {
                             addHook();
                           }}
                           type="button"
-                          className="mt-8 inline-flex items-center px-3 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+                          className="mt-8 inline-flex items-center px-3 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-primary-foreground bg-primary hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-ring"
                         >
                           Add Webhook
                         </button>

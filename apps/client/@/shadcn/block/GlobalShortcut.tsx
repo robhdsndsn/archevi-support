@@ -113,7 +113,7 @@ export default function GlobalShortcut() {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <div className="fixed inset-0 bg-gray-500 bg-opacity-25 transition-opacity" />
+            <div className="fixed inset-0 bg-muted-foreground bg-opacity-25 transition-opacity" />
           </Transition.Child>
 
           <div className="fixed inset-0 z-10 w-screen overflow-y-auto p-4 sm:p-6 md:p-20">
@@ -126,11 +126,11 @@ export default function GlobalShortcut() {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel className="mx-auto max-w-2xl transform divide-y divide-gray-500 divide-opacity-20 overflow-hidden rounded-xl bg-gray-900 shadow-2xl transition-all">
+              <Dialog.Panel className="mx-auto max-w-2xl transform divide-y divide-muted-foreground divide-opacity-20 overflow-hidden rounded-xl bg-foreground shadow-2xl transition-all">
                 <Combobox>
                   <div className="relative">
                     <MagnifyingGlassIcon
-                      className="pointer-events-none absolute left-4 top-3.5 h-5 w-5 text-gray-500"
+                      className="pointer-events-none absolute left-4 top-3.5 h-5 w-5 text-muted-foreground"
                       aria-hidden="true"
                     />
                     <Combobox.Input
@@ -143,15 +143,15 @@ export default function GlobalShortcut() {
                   {(query === "" || tickets.length > 0) && (
                     <Combobox.Options
                       static
-                      className="max-h-80 scroll-py-2 divide-y divide-gray-500 divide-opacity-20 overflow-y-auto"
+                      className="max-h-80 scroll-py-2 divide-y divide-muted-foreground divide-opacity-20 overflow-y-auto"
                     >
                       {/* <li className="p-2">
                         {query === "" && (
-                          <h2 className="mb-2 mt-4 px-3 text-xs font-semibold text-gray-200">
+                          <h2 className="mb-2 mt-4 px-3 text-xs font-semibold text-muted">
                             Recent searches
                           </h2>
                         )}
-                        <ul className="text-sm text-gray-400">
+                        <ul className="text-sm text-muted-foreground">
                           {(query === "" ? recent : tickets).map((project) => (
                             <Combobox.Option
                               key={project.id}
@@ -159,7 +159,7 @@ export default function GlobalShortcut() {
                               className={({ active }) =>
                                 classNames(
                                   "flex cursor-default select-none items-center rounded-md px-3 py-2",
-                                  active && "bg-gray-800 text-white"
+                                  active && "bg-secondary text-foreground"
                                 )
                               }
                             >
@@ -168,7 +168,7 @@ export default function GlobalShortcut() {
                                   <FolderIcon
                                     className={classNames(
                                       "h-6 w-6 flex-none",
-                                      active ? "text-white" : "text-gray-500"
+                                      active ? "text-foreground" : "text-muted-foreground"
                                     )}
                                     aria-hidden="true"
                                   />
@@ -176,7 +176,7 @@ export default function GlobalShortcut() {
                                     {project.name}
                                   </span>
                                   {active && (
-                                    <span className="ml-3 flex-none text-gray-400">
+                                    <span className="ml-3 flex-none text-muted-foreground">
                                       Jump to...
                                     </span>
                                   )}
@@ -189,7 +189,7 @@ export default function GlobalShortcut() {
                       {query === "" && (
                         <li className="p-2">
                           <h2 className="sr-only">Quick actions</h2>
-                          <ul className="text-sm text-gray-400">
+                          <ul className="text-sm text-muted-foreground">
                             {quickActions.map((action) => (
                               <Combobox.Option
                                 key={action.name}
@@ -207,7 +207,7 @@ export default function GlobalShortcut() {
                                 className={({ active }) =>
                                   classNames(
                                     "flex cursor-default select-none items-center rounded-md px-3 py-2 hover:cursor-pointer",
-                                    active && "bg-gray-800 text-white "
+                                    active && "bg-secondary text-foreground "
                                   )
                                 }
                               >
@@ -216,7 +216,7 @@ export default function GlobalShortcut() {
                                     <action.icon
                                       className={classNames(
                                         "h-6 w-6 flex-none",
-                                        active ? "text-white" : "text-gray-500"
+                                        active ? "text-foreground" : "text-muted-foreground"
                                       )}
                                       aria-hidden="true"
                                     />
@@ -236,10 +236,10 @@ export default function GlobalShortcut() {
                   {query !== "" && tickets.length === 0 && (
                     <div className="px-6 py-14 text-center sm:px-14">
                       <FolderIcon
-                        className="mx-auto h-6 w-6 text-gray-500"
+                        className="mx-auto h-6 w-6 text-muted-foreground"
                         aria-hidden="true"
                       />
-                      <p className="mt-4 text-sm text-gray-200">
+                      <p className="mt-4 text-sm text-muted">
                         We couldn't find any projects with that term. Please try
                         again.
                       </p>
@@ -259,9 +259,9 @@ export default function GlobalShortcut() {
                             onClick={() => handleRouting(ticket.id)}
                             className={({ active }) =>
                               classNames(
-                                "flex cursor-default select-none items-center rounded-md px-3 py-2 text-gray-500 capitalize",
+                                "flex cursor-default select-none items-center rounded-md px-3 py-2 text-muted-foreground capitalize",
                                 active &&
-                                  "bg-gray-800 text-white hover:cursor-pointer"
+                                  "bg-secondary text-foreground hover:cursor-pointer"
                               )
                             }
                           >
@@ -270,7 +270,7 @@ export default function GlobalShortcut() {
                                 <FolderIcon
                                   className={classNames(
                                     "h-6 w-6 flex-none",
-                                    active ? "text-white" : "text-gray-500"
+                                    active ? "text-foreground" : "text-muted-foreground"
                                   )}
                                   aria-hidden="true"
                                 />
@@ -278,7 +278,7 @@ export default function GlobalShortcut() {
                                   {ticket.title}
                                 </span>
                                 {active && (
-                                  <span className="ml-3 flex-none text-gray-400">
+                                  <span className="ml-3 flex-none text-muted-foreground">
                                     Jump to...
                                   </span>
                                 )}

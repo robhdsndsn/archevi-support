@@ -54,7 +54,7 @@ export default function NoteBookLayout({ children }) {
                 <nav className="flex-1 w-full " aria-label="Sidebar">
                   <div className="border-b-[1px]">
                     <Link
-                      className="inline-flex items-center px-4 py-2 text-sm font-medium text-green-600 dark:text-white"
+                      className="inline-flex items-center px-4 py-2 text-sm font-medium text-primary dark:text-white"
                       href="/notebook/new"
                     >
                       <PlusIconMini className="h-5 w-5" aria-hidden="true" />
@@ -67,9 +67,9 @@ export default function NoteBookLayout({ children }) {
                         href={`/notebook/${item.id}`}
                         className={classNames(
                           router.query.id === item.id
-                            ? "bg-green-500 text-white hover:text-white"
-                            : "text-gray-900 dark:text-white hover:bg-green-500 hover:text-white hover:bg-opacity-75",
-                          "group flex text-left px-2 py-2 w-full text-sm font-medium border-b-[1px] border-gray-200"
+                            ? "bg-primary text-primary-foreground hover:text-primary-foreground"
+                            : "text-foreground dark:text-white hover:bg-primary/90 hover:text-primary-foreground hover:bg-opacity-75",
+                          "group flex text-left px-2 py-2 w-full text-sm font-medium border-b-[1px] border-border"
                         )}
                       >
                         <div className="flex flex-row items-center justify-between w-full">

@@ -142,7 +142,7 @@ export default function NewLayout({ children }: any) {
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >
-              <div className="fixed inset-0 bg-gray-900/80" />
+              <div className="fixed inset-0 bg-background/80" />
             </Transition.Child>
 
             <div className="fixed inset-0 flex">
@@ -183,7 +183,7 @@ export default function NewLayout({ children }: any) {
                   <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-background px-6 pb-4">
                     <div className="flex align-middle flex-row h-14 items-center border-b-[1px]">
                       <Link href="https://archevi.com">
-                        <span className="text-3xl ml-2 text-green-500  hover:text-green-600 font-bold ">
+                        <span className="text-3xl ml-2 text-primary  hover:text-primary/80 font-bold ">
                           Archevi
                         </span>
                       </Link>
@@ -206,7 +206,7 @@ export default function NewLayout({ children }: any) {
                                   className={classNames(
                                     item.current
                                       ? "bg-secondary dark:bg-primary"
-                                      : "hover:bg-secondary dark:hover:bg-secondary-foreground dark:hover:text-gray-900 ",
+                                      : "hover:bg-muted dark:hover:bg-muted dark:hover:text-foreground ",
                                     "group -mx-2 flex gap-x-3 p-1 text-xs rounded-md font-semibold leading-6"
                                   )}
                                 >
@@ -227,7 +227,7 @@ export default function NewLayout({ children }: any) {
                                   className={classNames(
                                     location.pathname === "/issues"
                                       ? "bg-secondary dark:bg-primary"
-                                      : " hover:bg-[#F0F3F9] dark:hover:bg-white dark:hover:text-gray-900 ",
+                                      : " hover:bg-muted dark:hover:bg-muted dark:hover:text-foreground ",
                                     "group -mx-2 flex gap-x-3 p-1 rounded-md text-xs font-semibold leading-6"
                                   )}
                                 >
@@ -243,7 +243,7 @@ export default function NewLayout({ children }: any) {
                                   className={classNames(
                                     location.pathname === "/issues/open"
                                       ? "bg-secondary dark:bg-primary"
-                                      : " hover:bg-[#F0F3F9] dark:hover:bg-white dark:hover:text-gray-900 ",
+                                      : " hover:bg-muted dark:hover:bg-muted dark:hover:text-foreground ",
                                     "group -mx-2 flex gap-x-3 p-1 pl-3 rounded-md text-xs font-semibold leading-6"
                                   )}
                                 >
@@ -259,7 +259,7 @@ export default function NewLayout({ children }: any) {
                                   className={classNames(
                                     location.pathname === "/issues/closed"
                                       ? "bg-secondary dark:bg-primary"
-                                      : " hover:bg-[#F0F3F9] dark:hover:bg-white dark:hover:text-gray-900 ",
+                                      : " hover:bg-muted dark:hover:bg-muted dark:hover:text-foreground ",
                                     "group -mx-2 flex gap-x-3 p-1 pl-3 rounded-md text-xs font-semibold leading-6"
                                   )}
                                 >
@@ -276,7 +276,7 @@ export default function NewLayout({ children }: any) {
                                   className={classNames(
                                     location.pathname.includes("/admin")
                                       ? "bg-secondary dark:bg-primary"
-                                      : " hover:bg-[#F0F3F9] dark:hover:bg-white dark:hover:text-gray-900 ",
+                                      : " hover:bg-muted dark:hover:bg-muted dark:hover:text-foreground ",
                                     "group -mx-2 flex gap-x-3 p-1 rounded-md text-xs font-semibold leading-6"
                                   )}
                                 >
@@ -310,7 +310,7 @@ export default function NewLayout({ children }: any) {
           <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-background pb-4">
             <div className="flex align-middle flex-row h-14 items-center border-b-[1px] px-6">
               <Link href="https://archevi.com" target="_blank">
-                <span className="text-3xl ml-2 text-green-500 hover:text-green-600 font-bold">
+                <span className="text-3xl ml-2 text-primary hover:text-primary/80 font-bold">
                   Archevi
                 </span>
               </Link>
@@ -335,7 +335,7 @@ export default function NewLayout({ children }: any) {
                           className={classNames(
                             item.current
                               ? "bg-secondary dark:bg-primary"
-                              : "hover:bg-secondary dark:hover:bg-secondary-foreground dark:hover:text-gray-900 ",
+                              : "hover:bg-muted dark:hover:bg-muted dark:hover:text-foreground ",
                             "group -mx-2 flex gap-x-3 p-1 text-xs rounded-md font-semibold leading-6"
                           )}
                         >
@@ -359,7 +359,7 @@ export default function NewLayout({ children }: any) {
                           className={classNames(
                             location.pathname === "/issues"
                               ? "bg-secondary dark:bg-primary"
-                              : " hover:bg-[#F0F3F9] dark:hover:bg-white dark:hover:text-gray-900 ",
+                              : " hover:bg-muted dark:hover:bg-muted dark:hover:text-foreground ",
                             "group -mx-2 flex gap-x-3 p-1 rounded-md text-xs font-semibold leading-6"
                           )}
                         >
@@ -378,7 +378,7 @@ export default function NewLayout({ children }: any) {
                           className={classNames(
                             location.pathname === "/issues/open"
                               ? "bg-secondary dark:bg-primary"
-                              : " hover:bg-[#F0F3F9] dark:hover:bg-white dark:hover:text-gray-900 ",
+                              : " hover:bg-muted dark:hover:bg-muted dark:hover:text-foreground ",
                             "group -mx-2 flex gap-x-3 p-1 pl-3 rounded-md text-xs font-semibold leading-6"
                           )}
                         >
@@ -399,7 +399,7 @@ export default function NewLayout({ children }: any) {
                           className={classNames(
                             location.pathname === "/issues/closed"
                               ? "bg-secondary dark:bg-primary"
-                              : " hover:bg-[#F0F3F9] dark:hover:bg-white dark:hover:text-gray-900 ",
+                              : " hover:bg-muted dark:hover:bg-muted dark:hover:text-foreground ",
                             "group -mx-2 flex gap-x-3 p-1 pl-3 justify-between w-full rounded-md text-xs font-semibold leading-6"
                           )}
                         >
@@ -421,7 +421,7 @@ export default function NewLayout({ children }: any) {
                           className={classNames(
                             location.pathname.includes("/admin")
                               ? "bg-secondary dark:bg-primary"
-                              : " hover:bg-[#F0F3F9] dark:hover:bg-white dark:hover:text-gray-900 ",
+                              : " hover:bg-muted dark:hover:bg-muted dark:hover:text-foreground ",
                             "group -mx-2 flex gap-x-3 p-1 rounded-md text-xs font-semibold leading-6"
                           )}
                         >
@@ -465,14 +465,14 @@ export default function NewLayout({ children }: any) {
             </button>
 
             <div
-              className="h-6 w-px bg-gray-400 lg:hidden"
+              className="h-6 w-px bg-border lg:hidden"
               aria-hidden="true"
             />
 
             <div className="flex flex-1 gap-x-4 self-stretch lg:gap-x-6 items-center">
               <div className="sm:flex hidden w-full justify-start items-center space-x-6">
                 {user.isAdmin && (
-                  <span className="inline-flex items-center rounded-md bg-green-700/10 px-3 py-2 text-xs font-medium text-green-600 ring-1 ring-inset ring-green-500/20">
+                  <span className="inline-flex items-center rounded-md bg-primary/10 px-3 py-2 text-xs font-medium text-primary ring-1 ring-inset ring-primary/20">
                     Version {process.env.NEXT_PUBLIC_CLIENT_VERSION}
                   </span>
                 )}
@@ -481,7 +481,7 @@ export default function NewLayout({ children }: any) {
               <div className="flex w-full justify-end items-center gap-x-2 lg:gap-x-2 ">
                 <Button
                   variant="outline"
-                  className="relative rounded-md p-2 text-gray-400 hover:text-gray-500 hover:cursor-pointer focus:outline-none"
+                  className="relative rounded-md p-2 text-muted-foreground hover:text-foreground hover:cursor-pointer focus:outline-none"
                 >
                   <Link href="/notifications">
                     <Bell className="h-4 w-4 text-foreground" />
@@ -489,7 +489,7 @@ export default function NewLayout({ children }: any) {
                       (notification) => !notification.read
                     ).length > 0 && (
                       <svg
-                        className="h-2.5 w-2.5 absolute bottom-6 left-6 animate-pulse fill-green-500"
+                        className="h-2.5 w-2.5 absolute bottom-6 left-6 animate-pulse fill-primary"
                         viewBox="0 0 6 6"
                         aria-hidden="true"
                       >

@@ -152,7 +152,7 @@ export default function UpdateRole() {
                 <div key={group.category} className="mb-4">
                   <div className="flex items-center gap-2 mb-2">
                     <h4 className="font-medium">{group.category}</h4>
-                    <label className="flex items-center space-x-2 text-sm text-gray-600">
+                    <label className="flex items-center space-x-2 text-sm text-muted-foreground">
                       <input
                         type="checkbox"
                         checked={isCategoryFullySelected(group.category)}
@@ -204,13 +204,13 @@ export default function UpdateRole() {
               <CardTitle>Select Users</CardTitle>
               <div className="flex gap-2">
                 <button
-                  className="px-4 py-2 bg-gray-500 text-white rounded"
+                  className="px-4 py-2 bg-muted text-foreground rounded"
                   onClick={() => setStep(1)}
                 >
                   Back
                 </button>
                 <button
-                  className="px-4 py-2 bg-green-500 text-white rounded"
+                  className="px-4 py-2 bg-primary text-primary-foreground rounded"
                   onClick={handleUpdateRole}
                   disabled={isLoading}
                 >
@@ -222,7 +222,7 @@ export default function UpdateRole() {
           <CardContent>
             <div className="mb-4">
               <div className="relative mb-4">
-                <Search className="absolute left-2 top-2.5 h-4 w-4 text-gray-500" />
+                <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
                 <Input
                   placeholder="Search users..."
                   className="pl-8"
@@ -238,7 +238,7 @@ export default function UpdateRole() {
                   {filteredUsers.map((user) => (
                     <label
                       key={user.id}
-                      className="flex items-center space-x-2 p-2 border rounded hover:bg-gray-50"
+                      className="flex items-center space-x-2 p-2 border rounded hover:bg-muted"
                     >
                       <input
                         type="checkbox"
@@ -261,7 +261,7 @@ export default function UpdateRole() {
               )}
 
               {!isLoading && filteredUsers.length === 0 && (
-                <div className="text-center py-4 text-gray-500">
+                <div className="text-center py-4 text-muted-foreground">
                   {searchTerm ? "No users found" : "No users available"}
                 </div>
               )}

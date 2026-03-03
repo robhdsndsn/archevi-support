@@ -49,7 +49,7 @@ export default function LinkTicket({ id }) {
   return (
     <div>
       <button
-        className="inline-flex justify-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
+        className="inline-flex justify-center px-4 py-2 border border-input shadow-sm text-sm font-medium rounded-md text-foreground bg-card hover:bg-muted focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-border"
         onClick={() => {
           setOpen(true);
         }}
@@ -92,11 +92,11 @@ export default function LinkTicket({ id }) {
               leaveFrom="opacity-100 translate-y-0 sm:scale-100"
               leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             >
-              <div className="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-xl h-64 sm:w-full sm:p-6">
+              <div className="inline-block align-bottom bg-card rounded-lg px-4 pt-5 pb-4 text-left shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-xl h-64 sm:w-full sm:p-6">
                 <div className="hidden sm:block absolute top-0 right-0 pt-4 pr-4">
                   <button
                     type="button"
-                    className="bg-white rounded-md text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                    className="bg-card rounded-md text-muted-foreground hover:text-foreground focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-ring"
                     onClick={() => setOpen(false)}
                   >
                     <span className="sr-only">Close</span>
@@ -107,7 +107,7 @@ export default function LinkTicket({ id }) {
                   <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left w-full">
                     <Dialog.Title
                       as="h3"
-                      className="text-lg leading-6 font-medium text-gray-900"
+                      className="text-lg leading-6 font-medium text-foreground"
                     >
                       Link Ticket
                     </Dialog.Title>
@@ -120,7 +120,7 @@ export default function LinkTicket({ id }) {
                         {({ open }) => (
                           <>
                             <div className="mt-1 relative">
-                              <Listbox.Button className="bg-white relative w-full border border-gray-300 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                              <Listbox.Button className="bg-card relative w-full border border-input rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-ring focus:border-ring sm:text-sm">
                                 <span className="block truncate">
                                   {n
                                     ? n.title + " - #" + n.id
@@ -128,7 +128,7 @@ export default function LinkTicket({ id }) {
                                 </span>
                                 <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
                                   <SelectorIcon
-                                    className="h-5 w-5 text-gray-400"
+                                    className="h-5 w-5 text-muted-foreground"
                                     aria-hidden="true"
                                   />
                                 </span>
@@ -141,15 +141,15 @@ export default function LinkTicket({ id }) {
                                 leaveFrom="opacity-100"
                                 leaveTo="opacity-0"
                               >
-                                <Listbox.Options className="absolute z-50 mt-1 w-full bg-white shadow-lg max-h-60 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm">
+                                <Listbox.Options className="absolute z-50 mt-1 w-full bg-card shadow-lg max-h-60 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm">
                                   {tickets.map((ticket) => (
                                     <Listbox.Option
                                       key={ticket.id}
                                       className={({ active }) =>
                                         classNames(
                                           active
-                                            ? "text-white bg-indigo-600"
-                                            : "text-gray-900",
+                                            ? "text-primary-foreground bg-primary"
+                                            : "text-foreground",
                                           "cursor-default select-none relative py-2 pl-3 pr-9"
                                         )
                                       }
@@ -172,8 +172,8 @@ export default function LinkTicket({ id }) {
                                             <span
                                               className={classNames(
                                                 active
-                                                  ? "text-white"
-                                                  : "text-indigo-600",
+                                                  ? "text-primary-foreground"
+                                                  : "text-primary",
                                                 "absolute inset-y-0 right-0 flex items-center pr-4"
                                               )}
                                             >
@@ -200,7 +200,7 @@ export default function LinkTicket({ id }) {
                           setOpen(false);
                         }}
                         type="button"
-                        className="float-right mt-4 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+                        className="float-right mt-4 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-primary-foreground bg-primary hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-ring"
                       >
                         save
                       </button>

@@ -190,7 +190,7 @@ export default function CreateTicketModal({ keypress, setKeyPressDown }) {
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >
-              <Dialog.Overlay className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
+              <Dialog.Overlay className="fixed inset-0 bg-muted-foreground bg-opacity-75 transition-opacity" />
             </Transition.Child>
 
             {/* This element is to trick the browser into centering the modal contents. */}
@@ -264,7 +264,7 @@ export default function CreateTicketModal({ keypress, setKeyPressDown }) {
                           {({ open }) => (
                             <>
                               <div className="relative">
-                                <Listbox.Button className="relative w-full min-w-[172px] cursor-default rounded-md bg-white dark:bg-[#0A090C] dark:text-white py-1 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                <Listbox.Button className="relative w-full min-w-[172px] cursor-default rounded-md bg-background py-1 pl-3 pr-10 text-left text-foreground shadow-sm ring-1 ring-inset ring-border focus:outline-none focus:ring-2 focus:ring-ring sm:text-sm sm:leading-6">
                                   <span className="block truncate">
                                     {company === undefined
                                       ? t("select_a_client")
@@ -274,7 +274,7 @@ export default function CreateTicketModal({ keypress, setKeyPressDown }) {
                                   </span>
                                   <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                                     <ChevronUpDownIcon
-                                      className="h-5 w-5 text-gray-400"
+                                      className="h-5 w-5 text-muted-foreground"
                                       aria-hidden="true"
                                     />
                                   </span>
@@ -287,13 +287,13 @@ export default function CreateTicketModal({ keypress, setKeyPressDown }) {
                                   leaveFrom="opacity-100"
                                   leaveTo="opacity-0"
                                 >
-                                  <Listbox.Options className="absolute z-10  max-h-60 w-full overflow-auto rounded-md bg-white dark:bg-[#0A090C] dark:text-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+                                  <Listbox.Options className="absolute z-10  max-h-60 w-full overflow-auto rounded-md bg-background py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
                                     <Listbox.Option
                                       className={({ active }) =>
                                         classNames(
                                           active
-                                            ? "bg-indigo-600 text-white"
-                                            : "text-gray-900 dark:text-white",
+                                            ? "bg-primary text-primary-foreground"
+                                            : "text-foreground",
                                           "relative cursor-default select-none py-2 pl-3 pr-9"
                                         )
                                       }
@@ -316,8 +316,8 @@ export default function CreateTicketModal({ keypress, setKeyPressDown }) {
                                             <span
                                               className={classNames(
                                                 active
-                                                  ? "text-white"
-                                                  : "text-indigo-600",
+                                                  ? "text-primary-foreground"
+                                                  : "text-primary",
                                                 "absolute inset-y-0 right-0 flex items-center pr-4"
                                               )}
                                             >
@@ -337,8 +337,8 @@ export default function CreateTicketModal({ keypress, setKeyPressDown }) {
                                           className={({ active }) =>
                                             classNames(
                                               active
-                                                ? "bg-indigo-600 text-white"
-                                                : "text-gray-900 dark:text-white",
+                                                ? "bg-primary text-primary-foreground"
+                                                : "text-foreground",
                                               "relative cursor-default select-none py-2 pl-3 pr-9"
                                             )
                                           }
@@ -361,8 +361,8 @@ export default function CreateTicketModal({ keypress, setKeyPressDown }) {
                                                 <span
                                                   className={classNames(
                                                     active
-                                                      ? "text-white"
-                                                      : "text-indigo-600",
+                                                      ? "text-primary-foreground"
+                                                      : "text-primary",
                                                     "absolute inset-y-0 right-0 flex items-center pr-4"
                                                   )}
                                                 >
@@ -387,7 +387,7 @@ export default function CreateTicketModal({ keypress, setKeyPressDown }) {
                           {({ open }) => (
                             <>
                               <div className="relative">
-                                <Listbox.Button className="relative w-full min-w-[172px] cursor-default rounded-md bg-white dark:bg-[#0A090C] dark:text-white py-1 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                <Listbox.Button className="relative w-full min-w-[172px] cursor-default rounded-md bg-background py-1 pl-3 pr-10 text-left text-foreground shadow-sm ring-1 ring-inset ring-border focus:outline-none focus:ring-2 focus:ring-ring sm:text-sm sm:leading-6">
                                   <span className="block truncate">
                                     {engineer === undefined
                                       ? t("select_an_engineer")
@@ -395,7 +395,7 @@ export default function CreateTicketModal({ keypress, setKeyPressDown }) {
                                   </span>
                                   <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                                     <ChevronUpDownIcon
-                                      className="h-5 w-5 text-gray-400"
+                                      className="h-5 w-5 text-muted-foreground"
                                       aria-hidden="true"
                                     />
                                   </span>
@@ -408,13 +408,13 @@ export default function CreateTicketModal({ keypress, setKeyPressDown }) {
                                   leaveFrom="opacity-100"
                                   leaveTo="opacity-0"
                                 >
-                                  <Listbox.Options className="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white dark:bg-[#0A090C] dark:text-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+                                  <Listbox.Options className="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-background py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
                                     <Listbox.Option
                                       className={({ active }) =>
                                         classNames(
                                           active
-                                            ? "bg-indigo-600 text-white"
-                                            : "text-gray-900 dark:text-white",
+                                            ? "bg-primary text-primary-foreground"
+                                            : "text-foreground",
                                           "relative cursor-default select-none py-2 pl-3 pr-9"
                                         )
                                       }
@@ -437,8 +437,8 @@ export default function CreateTicketModal({ keypress, setKeyPressDown }) {
                                             <span
                                               className={classNames(
                                                 active
-                                                  ? "text-white"
-                                                  : "text-indigo-600",
+                                                  ? "text-primary-foreground"
+                                                  : "text-primary",
                                                 "absolute inset-y-0 right-0 flex items-center pr-4"
                                               )}
                                             >
@@ -458,8 +458,8 @@ export default function CreateTicketModal({ keypress, setKeyPressDown }) {
                                           className={({ active }) =>
                                             classNames(
                                               active
-                                                ? "bg-indigo-600 text-white"
-                                                : "text-gray-900 dark:text-white",
+                                                ? "bg-primary text-primary-foreground"
+                                                : "text-foreground",
                                               "relative cursor-default select-none py-2 pl-3 pr-9"
                                             )
                                           }
@@ -482,8 +482,8 @@ export default function CreateTicketModal({ keypress, setKeyPressDown }) {
                                                 <span
                                                   className={classNames(
                                                     active
-                                                      ? "text-white"
-                                                      : "text-indigo-600",
+                                                      ? "text-primary-foreground"
+                                                      : "text-primary",
                                                     "absolute inset-y-0 right-0 flex items-center pr-4"
                                                   )}
                                                 >
@@ -508,13 +508,13 @@ export default function CreateTicketModal({ keypress, setKeyPressDown }) {
                           {({ open }) => (
                             <>
                               <div className="relative">
-                                <Listbox.Button className="relative w-full min-w-[172px] cursor-default rounded-md bg-white dark:bg-[#0A090C] dark:text-white py-1 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none sm:text-sm sm:leading-6">
+                                <Listbox.Button className="relative w-full min-w-[172px] cursor-default rounded-md bg-background py-1 pl-3 pr-10 text-left text-foreground shadow-sm ring-1 ring-inset ring-border focus:outline-none sm:text-sm sm:leading-6">
                                   <span className="block truncate">
                                     {selected.name}
                                   </span>
                                   <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                                     <ChevronUpDownIcon
-                                      className="h-5 w-5 text-gray-400"
+                                      className="h-5 w-5 text-muted-foreground"
                                       aria-hidden="true"
                                     />
                                   </span>
@@ -527,15 +527,15 @@ export default function CreateTicketModal({ keypress, setKeyPressDown }) {
                                   leaveFrom="opacity-100"
                                   leaveTo="opacity-0"
                                 >
-                                  <Listbox.Options className="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white dark:bg-[#0A090C] dark:text-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+                                  <Listbox.Options className="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-background py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
                                     {type.map((person) => (
                                       <Listbox.Option
                                         key={person.id}
                                         className={({ active }) =>
                                           classNames(
                                             active
-                                              ? "bg-gray-400 text-white"
-                                              : "text-gray-900 dark:text-white",
+                                              ? "bg-muted-foreground text-white"
+                                              : "text-foreground",
                                             "relative cursor-default select-none py-2 pl-3 pr-9"
                                           )
                                         }
@@ -558,8 +558,8 @@ export default function CreateTicketModal({ keypress, setKeyPressDown }) {
                                               <span
                                                 className={classNames(
                                                   active
-                                                    ? "text-white"
-                                                    : "text-indigo-600",
+                                                    ? "text-primary-foreground"
+                                                    : "text-primary",
                                                   "absolute inset-y-0 right-0 flex items-center pr-4"
                                                 )}
                                               >
@@ -583,7 +583,7 @@ export default function CreateTicketModal({ keypress, setKeyPressDown }) {
                     )}
                   </div>
 
-                  <div className="border-t border-gray-300 ">
+                  <div className="border-t border-input ">
                     <div className="mt-2 float-right">
                       <button
                         onClick={() => {
@@ -591,7 +591,7 @@ export default function CreateTicketModal({ keypress, setKeyPressDown }) {
                           createTicket();
                         }}
                         type="button"
-                        className="inline-flex justify-center rounded-md shadow-sm px-2.5 py-1.5 border border-transparent text-xs bg-green-600 font-medium text-white hover:bg-green-700 focus:outline-none "
+                        className="inline-flex justify-center rounded-md shadow-sm px-2.5 py-1.5 border border-transparent text-xs bg-primary font-medium text-primary-foreground hover:bg-primary/90 focus:outline-none "
                       >
                         Create Ticket
                       </button>

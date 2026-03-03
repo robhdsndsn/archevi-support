@@ -113,7 +113,7 @@ export default function PortalLayout({ children }: any) {
 
   return (
     !loading && (
-      <div className="min-h-screen overflow-hidden bg-white dark:bg-[#0A090C]">
+      <div className="min-h-screen overflow-hidden bg-background">
         <Transition.Root show={sidebarOpen} as={Fragment}>
           <Dialog
             as="div"
@@ -129,7 +129,7 @@ export default function PortalLayout({ children }: any) {
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >
-              <div className="fixed inset-0 bg-gray-900/80" />
+              <div className="fixed inset-0 bg-background/80" />
             </Transition.Child>
 
             <div className="fixed inset-0 flex">
@@ -167,11 +167,11 @@ export default function PortalLayout({ children }: any) {
                     </div>
                   </Transition.Child>
                   {/* Sidebar component, swap this element with another sidebar if you like */}
-                  <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-white px-6 pb-4">
+                  <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-background px-6 pb-4">
                     <div className="flex align-middle flex-row h-14 items-center border-b-[1px]">
                       {/* <img className="h-8 w-auto" src="/logo.svg" alt="Workflow" /> */}
                       <Link href="https://archevi.com">
-                        <span className="text-3xl ml-2  hover:text-green-600 font-bold ">
+                        <span className="text-3xl ml-2  hover:text-primary/80 font-bold ">
                           Archevi
                         </span>
                       </Link>
@@ -186,16 +186,16 @@ export default function PortalLayout({ children }: any) {
                                   href={item.href}
                                   className={classNames(
                                     item.current
-                                      ? "bg-gray-50 text-indigo-600"
-                                      : "text-gray-700 hover:text-indigo-600 hover:bg-gray-50",
+                                      ? "bg-muted text-primary"
+                                      : "text-foreground hover:text-primary hover:bg-muted",
                                     "group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
                                   )}
                                 >
                                   <item.icon
                                     className={classNames(
                                       item.current
-                                        ? "text-indigo-600"
-                                        : "text-gray-400 group-hover:text-indigo-600",
+                                        ? "text-primary"
+                                        : "text-muted-foreground group-hover:text-primary",
                                       "h-6 w-6 shrink-0"
                                     )}
                                     aria-hidden="true"
@@ -212,10 +212,10 @@ export default function PortalLayout({ children }: any) {
                         <li className="mt-auto">
                           <a
                             href="#"
-                            className="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-700 hover:bg-gray-50 hover:text-indigo-600"
+                            className="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-foreground hover:bg-muted hover:text-primary"
                           >
                             <Cog6ToothIcon
-                              className="h-6 w-6 shrink-0 text-gray-400 group-hover:text-indigo-600"
+                              className="h-6 w-6 shrink-0 text-muted-foreground group-hover:text-primary"
                               aria-hidden="true"
                             />
                             Settings
@@ -233,11 +233,11 @@ export default function PortalLayout({ children }: any) {
         {/* Static sidebar for desktop */}
         <div className="hidden lg:fixed lg:inset-y-0 lg:z-10 lg:flex lg:w-64 2xl:w-72 lg:flex-col border-r-[1px]">
           {/* Sidebar component, swap this element with another sidebar if you like */}
-          <div className="flex grow flex-col gap-y-5 overflow-y-auto  bg-[#ffffff] dark:bg-[#393E46] pb-4">
+          <div className="flex grow flex-col gap-y-5 overflow-y-auto  bg-background pb-4">
             <div className="flex align-middle flex-row h-14 items-center border-b-[1px] px-6">
               {/* <img className="h-8 w-auto" src="/logo.svg" alt="Workflow" /> */}
               <Link href="https://archevi.com">
-                <span className="text-3xl ml-2  hover:text-green-600 font-bold ">
+                <span className="text-3xl ml-2  hover:text-primary/80 font-bold ">
                   Archevi
                 </span>
               </Link>
@@ -252,8 +252,8 @@ export default function PortalLayout({ children }: any) {
                           href={item.href}
                           className={classNames(
                             item.current
-                              ? "bg-[#F0F3F9] dark:bg-gray-800 dark:text-green-600"
-                              : " hover:bg-[#F0F3F9] dark:hover:bg-gray-800 dark:hover:text-gray-900 ",
+                              ? "bg-muted dark:bg-muted dark:text-primary"
+                              : " hover:bg-muted dark:hover:bg-muted dark:hover:text-foreground ",
                             "group -mx-2 flex gap-x-3 p-1 text-xs font-semibold leading-6"
                           )}
                         >
@@ -276,8 +276,8 @@ export default function PortalLayout({ children }: any) {
                           href="/portal/issues"
                           className={classNames(
                             location.pathname === "/portal/issues"
-                              ? "bg-[#F0F3F9] dark:bg-gray-800 dark:text-green-600"
-                              : " hover:bg-[#F0F3F9] dark:hover:bg-white dark:hover:text-gray-900 ",
+                              ? "bg-muted dark:bg-muted dark:text-primary"
+                              : " hover:bg-muted dark:hover:bg-muted dark:hover:text-foreground ",
                             "group -mx-2 flex gap-x-3 p-1 text-xs font-semibold leading-6"
                           )}
                         >
@@ -295,8 +295,8 @@ export default function PortalLayout({ children }: any) {
                           href="/portal/issues/open"
                           className={classNames(
                             location.pathname === "/portal/issues/open"
-                              ? "bg-[#F0F3F9] dark:bg-gray-800 dark:text-green-600"
-                              : " hover:bg-[#F0F3F9] dark:hover:bg-white dark:hover:text-gray-900 ",
+                              ? "bg-muted dark:bg-muted dark:text-primary"
+                              : " hover:bg-muted dark:hover:bg-muted dark:hover:text-foreground ",
                             "group -mx-2 flex gap-x-3 p-1 mll-2 text-xs font-semibold leading-6"
                           )}
                         >
@@ -316,8 +316,8 @@ export default function PortalLayout({ children }: any) {
                           href="/portal/issues/closed"
                           className={classNames(
                             location.pathname === "/portal/issues/closed"
-                              ? "bg-[#F0F3F9] dark:bg-gray-800 dark:text-green-600"
-                              : " hover:bg-[#F0F3F9] dark:hover:bg-white dark:hover:text-gray-900 ",
+                              ? "bg-muted dark:bg-muted dark:text-primary"
+                              : " hover:bg-muted dark:hover:bg-muted dark:hover:text-foreground ",
                             "group -mx-2 flex gap-x-3 p-1 text-xs font-semibold leading-6"
                           )}
                         >
@@ -340,7 +340,7 @@ export default function PortalLayout({ children }: any) {
         </div>
 
         <div className="lg:pl-64 2xl:pl-72">
-          <div className="sticky top-0 z-10 flex h-14 shrink-0 items-center gap-x-4 border-b border-gray-200 bg-white dark:bg-[#0A090C] px-4 sm:gap-x-6">
+          <div className="sticky top-0 z-10 flex h-14 shrink-0 items-center gap-x-4 border-b border-border bg-background px-4 sm:gap-x-6">
             <button
               type="button"
               className="-m-2.5 p-2.5 text-black dark:text-white lg:hidden"
@@ -355,7 +355,7 @@ export default function PortalLayout({ children }: any) {
 
             {/* Separator */}
             <div
-              className="h-6 w-px bg-gray-400 lg:hidden"
+              className="h-6 w-px bg-border lg:hidden"
               aria-hidden="true"
             />
 
@@ -365,7 +365,7 @@ export default function PortalLayout({ children }: any) {
                 <Menu as="div" className="relative">
                   <Menu.Button className="z-50 flex items-center p-1.5">
                     <span className="sr-only">Open user menu</span>
-                    <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-gray-500">
+                    <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-muted-foreground">
                       <span className="text-xs mt-0.5 font-medium leading-none text-white uppercase">
                         {user.name[0]}
                       </span>
@@ -380,7 +380,7 @@ export default function PortalLayout({ children }: any) {
                     leaveFrom="transform opacity-100 scale-100"
                     leaveTo="transform opacity-0 scale-95"
                   >
-                    <Menu.Items className="bg-white absolute right-0 z-50 w-40 origin-top-right rounded-md  shadow-lg ring-1 ring-gray-900/5 focus:outline-none">
+                    <Menu.Items className="bg-card absolute right-0 z-50 w-40 origin-top-right rounded-md shadow-lg ring-1 ring-border focus:outline-none">
                       <Menu.Item>
                         {({ active }) => (
                           <button
@@ -388,8 +388,8 @@ export default function PortalLayout({ children }: any) {
                               logout();
                             }}
                             className={classNames(
-                              active ? "bg-gray-100" : "",
-                              "block px-3 text-left text-sm font-bold h-full p-2 w-full rounded-md text-gray-900"
+                              active ? "bg-muted" : "",
+                              "block px-3 text-left text-sm font-bold h-full p-2 w-full rounded-md text-foreground"
                             )}
                           >
                             {t("logout")}
@@ -403,7 +403,7 @@ export default function PortalLayout({ children }: any) {
             </div>
           </div>
 
-          <main className="bg-white dark:bg-[#0A090C]">{children}</main>
+          <main className="bg-background">{children}</main>
         </div>
       </div>
     )

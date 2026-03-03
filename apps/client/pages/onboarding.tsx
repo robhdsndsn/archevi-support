@@ -53,7 +53,7 @@ export default function Home() {
                 <Link
                   target="_blank"
                   href="https://archevi.com"
-                  className="rounded-md mt-4 sm:mt-0 bg-gray-600 px-2.5 whitespace-nowrap hover:text-white py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-gray-500 "
+                  className="rounded-md mt-4 sm:mt-0 bg-secondary px-2.5 whitespace-nowrap hover:text-white py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-secondary/80 "
                 >
                   Check it out
                 </Link>
@@ -70,7 +70,7 @@ export default function Home() {
                 <Link
                   target="_blank"
                   href="https://archevi.com"
-                  className="rounded-md flex-end bg-green-600 mt-4 whitespace-nowrap sm:mt-0 px-2.5 py-1.5 text-sm font-semibold hover:text-white text-white shadow-sm hover:bg-green-500 "
+                  className="rounded-md flex-end bg-primary mt-4 whitespace-nowrap sm:mt-0 px-2.5 py-1.5 text-sm font-semibold hover:text-primary-foreground text-primary-foreground shadow-sm hover:bg-primary/90 "
                 >
                   Check it out
                 </Link>
@@ -96,7 +96,7 @@ export default function Home() {
           </div>
           <div className="float-right mt-4">
             <button
-              className="bg-green-500 hover:bg-green-600 text-white px-2.5 py-1.5 mr-6 text-sm font-semibold rounded-lg"
+              className="bg-primary hover:bg-primary/90 text-primary-foreground px-2.5 py-1.5 mr-6 text-sm font-semibold rounded-lg"
               onClick={() => updateFirstLogin()}
             >
               To Dashboard

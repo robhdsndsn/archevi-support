@@ -46,7 +46,7 @@ export default function ShadLayout({ children }: any) {
                 <SidebarTrigger title="[" />
                 <div className="sm:flex hidden w-full justify-start items-center space-x-6">
                   {user.isAdmin && (
-                    <span className="inline-flex items-center rounded-md bg-green-700/10 px-3 py-2 text-xs font-medium text-green-600 ring-1 ring-inset ring-green-500/20">
+                    <span className="inline-flex items-center rounded-md bg-primary/10 px-3 py-2 text-xs font-medium text-primary ring-1 ring-inset ring-primary/20">
                       Version {process.env.NEXT_PUBLIC_CLIENT_VERSION}
                     </span>
                   )}
@@ -55,7 +55,7 @@ export default function ShadLayout({ children }: any) {
                 <div className="flex w-full sticky right-0 justify-end items-center gap-x-2 lg:gap-x-2 ">
                   <Button
                     variant="outline"
-                    className="relative rounded-md p-2 text-gray-400 hover:text-gray-500 hover:cursor-pointer focus:outline-none"
+                    className="relative rounded-md p-2 text-muted-foreground hover:text-foreground hover:cursor-pointer focus:outline-none"
                   >
                     <Link href="/notifications">
                       <Bell className="h-4 w-4 text-foreground" />
@@ -63,7 +63,7 @@ export default function ShadLayout({ children }: any) {
                         (notification) => !notification.read
                       ).length > 0 && (
                         <svg
-                          className="h-2.5 w-2.5 absolute bottom-6 left-6 animate-pulse fill-green-500"
+                          className="h-2.5 w-2.5 absolute bottom-6 left-6 animate-pulse fill-primary"
                           viewBox="0 0 6 6"
                           aria-hidden="true"
                         >

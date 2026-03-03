@@ -69,7 +69,7 @@ export default function ListUserFiles({ uploaded, setUploaded }) {
                     <button
                       onClick={() => download(file)}
                       type="button"
-                      className="float-right  border border-transparent rounded-full shadow-sm hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                      className="float-right  border border-transparent rounded-full shadow-sm hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-ring"
                     >
                       <DocumentDownloadIcon
                         className="h-5 w-5"
@@ -79,7 +79,7 @@ export default function ListUserFiles({ uploaded, setUploaded }) {
                     <button
                       onClick={() => deleteFile(file)}
                       type="button"
-                      className="mr-1 float-right border border-transparent rounded-full shadow-sm text-red-600 hover:bg-red-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                      className="mr-1 float-right border border-transparent rounded-full shadow-sm text-red-600 hover:bg-red-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-ring"
                     >
                       <TrashIcon className="h-5 w-5" aria-hidden="true" />
                     </button>

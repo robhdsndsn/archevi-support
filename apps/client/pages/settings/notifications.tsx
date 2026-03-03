@@ -64,8 +64,8 @@ export default function UserNotifications() {
                     checked={ticket_creation}
                     onChange={setTicket_creation}
                     className={classNames(
-                      ticket_creation ? "bg-primary" : "bg-gray-200",
-                      "relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                      ticket_creation ? "bg-primary" : "bg-muted",
+                      "relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-ring"
                     )}
                   >
                     <span
@@ -102,8 +102,8 @@ export default function UserNotifications() {
                     checked={ticket_status}
                     onChange={setTicket_status}
                     className={classNames(
-                      ticket_status ? "bg-primary" : "bg-gray-200",
-                      "relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                      ticket_status ? "bg-primary" : "bg-muted",
+                      "relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-ring"
                     )}
                   >
                     <span
@@ -139,8 +139,8 @@ export default function UserNotifications() {
                     checked={ticket_assigned}
                     onChange={setTicket_assigned}
                     className={classNames(
-                      ticket_assigned ? "bg-primary" : "bg-gray-200",
-                      "relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                      ticket_assigned ? "bg-primary" : "bg-muted",
+                      "relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-ring"
                     )}
                   >
                     <span
@@ -176,8 +176,8 @@ export default function UserNotifications() {
                     checked={ticket_comments}
                     onChange={setTicket_comments}
                     className={classNames(
-                      ticket_comments ? "bg-primary" : "bg-gray-200",
-                      "relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                      ticket_comments ? "bg-primary" : "bg-muted",
+                      "relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-ring"
                     )}
                   >
                     <span

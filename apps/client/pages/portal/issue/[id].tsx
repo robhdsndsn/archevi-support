@@ -110,21 +110,21 @@ export default function Ticket() {
       {status === "success" && (
         <main className="flex-1 min-h-[90vh] py-8">
           <div className="mx-auto max-w-6xl w-full px-4 sm:px-6 lg:px-8 flex flex-col xl:flex-row justify-center">
-            <div className="xl:border-r xl:border-gray-200 xl:pr-8 xl:w-2/3">
+            <div className="xl:border-r xl:border-border xl:pr-8 xl:w-2/3">
               <div className="">
                 <div className="md:flex md:items-center md:justify-between md:space-x-4 xl:border-b xl:pb-6">
                   <div className="w-1/2">
-                    <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
+                    <h1 className="text-2xl font-bold text-foreground dark:text-white">
                       {data.ticket.title}
                     </h1>
-                    <p className="mt-2 text-sm text-gray-500 dark:text-white">
-                      <span className="font-medium text-gray-900 dark:text-white">
+                    <p className="mt-2 text-sm text-muted-foreground dark:text-white">
+                      <span className="font-medium text-foreground dark:text-white">
                         {data.ticket.email}
                       </span>{" "}
                       via
                       <a
                         href="#"
-                        className="font-medium text-gray-900 dark:text-white"
+                        className="font-medium text-foreground dark:text-white"
                       >
                         {data.ticket.fromImap === true
                           ? " Email - "
@@ -159,19 +159,19 @@ export default function Ticket() {
                     )}
                     <div className="flex items-center space-x-2">
                       <ChatBubbleLeftEllipsisIcon
-                        className="h-5 w-5 text-gray-400"
+                        className="h-5 w-5 text-muted-foreground"
                         aria-hidden="true"
                       />
-                      <span className="text-sm font-medium text-gray-900 dark:text-white">
+                      <span className="text-sm font-medium text-foreground dark:text-white">
                         {data.ticket.comments.length} {t("comments")}
                       </span>
                     </div>
                     <div className="flex items-center space-x-2">
                       <CalendarIcon
-                        className="h-5 w-5 text-gray-400"
+                        className="h-5 w-5 text-muted-foreground"
                         aria-hidden="true"
                       />
-                      <span className="text-sm font-medium text-gray-900 dark:text-white">
+                      <span className="text-sm font-medium text-foreground dark:text-white">
                         Created on{" "}
                         {moment(data.ticket.createdAt).format("DD/MM/YYYY")}
                       </span>
@@ -182,7 +182,7 @@ export default function Ticket() {
                         {({ open }) => (
                           <>
                             <div className="relative">
-                              <Listbox.Button className="bg-white z-50 relative w-full border border-gray-300 rounded-md shadow-sm pl-3 pr-10 px-4 py-1.5 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                              <Listbox.Button className="bg-card z-50 relative w-full border border-input rounded-md shadow-sm pl-3 pr-10 px-4 py-1.5 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-ring focus:border-ring sm:text-sm">
                                 <span className="block min-w-[75px] text-xs">
                                   {data.ticket.assignedTo
                                     ? data.ticket.assignedTo.name
@@ -199,15 +199,15 @@ export default function Ticket() {
                                 leaveFrom="opacity-100"
                                 leaveTo="opacity-0"
                               >
-                                <Listbox.Options className="absolute z-50 mt-1 w-full bg-white shadow-lg max-h-60 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm">
+                                <Listbox.Options className="absolute z-50 mt-1 w-full bg-card shadow-lg max-h-60 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm">
                                   {users.map((user: any) => (
                                     <Listbox.Option
                                       key={user.id}
                                       className={({ active }) =>
                                         classNames(
                                           active
-                                            ? "text-white bg-indigo-600"
-                                            : "text-gray-900",
+                                            ? "text-primary-foreground bg-primary"
+                                            : "text-foreground",
                                           "cursor-default select-none relative py-2 pl-3 pr-9"
                                         )
                                       }
@@ -231,7 +231,7 @@ export default function Ticket() {
                                               className={classNames(
                                                 active
                                                   ? "text-white"
-                                                  : "text-indigo-600",
+                                                  : "text-primary",
                                                 "absolute inset-y-0 right-0 flex items-center pr-4"
                                               )}
                                             >
@@ -253,27 +253,27 @@ export default function Ticket() {
                       </Listbox>
                     )}
                   </div>
-                  <div className="py-3 border-b border-gray-200">
-                    <div className="border-t border-gray-200">
+                  <div className="py-3 border-b border-border">
+                    <div className="border-t border-border">
                       <div className="flex flex-row items-center justify-between">
-                        <span className="text-sm font-medium text-gray-500 mt-2">
+                        <span className="text-sm font-medium text-muted-foreground mt-2">
                           {t("labels")}
                         </span>
-                        <span className="text-sm font-medium text-gray-500 mt-2">
+                        <span className="text-sm font-medium text-muted-foreground mt-2">
                           {t("edit-btn")}
                         </span>
                       </div>
                       <ul role="list" className="mt-2 leading-8 space-x-2">
                         {data.ticket.priority === "Low" && (
                           <li className="inline">
-                            <div className="relative inline-flex items-center rounded-full px-2.5 py-1 ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+                            <div className="relative inline-flex items-center rounded-full px-2.5 py-1 ring-1 ring-inset ring-border hover:bg-muted">
                               <div className="absolute flex flex-shrink-0 items-center justify-center">
                                 <span
                                   className="h-1.5 w-1.5 rounded-full bg-blue-500"
                                   aria-hidden="true"
                                 />
                               </div>
-                              <div className="ml-3 text-xs font-semibold text-gray-900">
+                              <div className="ml-3 text-xs font-semibold text-foreground">
                                 {data.ticket.priority} {t("priority")}
                               </div>
                             </div>
@@ -281,14 +281,14 @@ export default function Ticket() {
                         )}
                         {data.ticket.priority === "Normal" && (
                           <li className="inline">
-                            <div className="relative inline-flex items-center rounded-full px-2.5 py-1 ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+                            <div className="relative inline-flex items-center rounded-full px-2.5 py-1 ring-1 ring-inset ring-border hover:bg-muted">
                               <div className="absolute flex flex-shrink-0 items-center justify-center">
                                 <span
                                   className="h-1.5 w-1.5 rounded-full bg-green-500"
                                   aria-hidden="true"
                                 />
                               </div>
-                              <div className="ml-3 text-xs font-semibold text-gray-900">
+                              <div className="ml-3 text-xs font-semibold text-foreground">
                                 {data.ticket.priority} {t("priority")}
                               </div>
                             </div>
@@ -296,14 +296,14 @@ export default function Ticket() {
                         )}
                         {data.ticket.priority === "High" && (
                           <li className="inline">
-                            <div className="relative inline-flex items-center rounded-full px-2.5 py-1 ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+                            <div className="relative inline-flex items-center rounded-full px-2.5 py-1 ring-1 ring-inset ring-border hover:bg-muted">
                               <div className="absolute flex flex-shrink-0 items-center justify-center">
                                 <span
                                   className="h-1.5 w-1.5 rounded-full bg-rose-500"
                                   aria-hidden="true"
                                 />
                               </div>
-                              <div className="ml-3 text-xs font-semibold text-gray-900">
+                              <div className="ml-3 text-xs font-semibold text-foreground">
                                 {data.ticket.priority} {t("priority")}
                               </div>
                             </div>
@@ -311,14 +311,14 @@ export default function Ticket() {
                         )}
                         {data.ticket.status && (
                           <li className="inline">
-                            <div className="relative inline-flex items-center rounded-full px-2.5 py-1 ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+                            <div className="relative inline-flex items-center rounded-full px-2.5 py-1 ring-1 ring-inset ring-border hover:bg-muted">
                               <div className="absolute flex flex-shrink-0 items-center justify-center">
                                 <span
                                   className="h-1.5 w-1.5 rounded-full bg-rose-500"
                                   aria-hidden="true"
                                 />
                               </div>
-                              <div className="ml-3 text-xs font-semibold text-gray-900">
+                              <div className="ml-3 text-xs font-semibold text-foreground">
                                 {data.ticket.status === "needs_support" && (
                                   <span>Needs Support</span>
                                 )}
@@ -368,7 +368,7 @@ export default function Ticket() {
                     <div className="pb-2">
                       <span
                         id="activity-title"
-                        className="text-lg font-medium text-gray-900 dark:text-white"
+                        className="text-lg font-medium text-foreground dark:text-white"
                       >
                         {t("comments")}
                       </span>
@@ -385,13 +385,13 @@ export default function Ticket() {
                                     {itemIdx !==
                                     data.ticket.comments.length - 1 ? (
                                       <span
-                                        className="absolute left-3 top-5 -ml-px h-full w-0.5 bg-gray-200"
+                                        className="absolute left-3 top-5 -ml-px h-full w-0.5 bg-border"
                                         aria-hidden="true"
                                       />
                                     ) : null}
                                     <div className="relative flex items-start space-x-3">
                                       <div className="relative">
-                                        <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-gray-500">
+                                        <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-muted-foreground">
                                           <span className="font-medium leading-none text-xs text-white uppercase">
                                             {item.user.name[0]}
                                           </span>
@@ -400,28 +400,28 @@ export default function Ticket() {
                                       <div className="min-w-0 flex-1">
                                         <div>
                                           <div className="text-sm">
-                                            <span className="font-medium text-gray-900 dark:text-white ">
+                                            <span className="font-medium text-foreground dark:text-white ">
                                               {item.user.name}
                                             </span>
                                           </div>
                                           <div className=" flex flex-row space-x-1">
-                                            <span className="text-xs text-gray-500 dark:text-white">
+                                            <span className="text-xs text-muted-foreground dark:text-white">
                                               {item.public
                                                 ? "Publicly"
                                                 : "Internally"}
                                             </span>
-                                            <span className="text-xs text-gray-500 dark:text-white">
+                                            <span className="text-xs text-muted-foreground dark:text-white">
                                               commented at
                                             </span>
 
-                                            <span className="text-xs text-gray-500 dark:text-white">
+                                            <span className="text-xs text-muted-foreground dark:text-white">
                                               {moment(item.createdAt).format(
                                                 "DD/MM/YYYY hh:mm"
                                               )}
                                             </span>
                                           </div>
                                         </div>
-                                        <div className="text-sm  text-gray-900 dark:text-white">
+                                        <div className="text-sm  text-foreground dark:text-white">
                                           <span>{item.text}</span>
                                         </div>
                                       </div>
@@ -444,7 +444,7 @@ export default function Ticket() {
                                   id="comment"
                                   name="comment"
                                   rows={3}
-                                  className="block w-full dark:bg-black rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-gray-900 sm:text-sm sm:leading-6"
+                                  className="block w-full dark:bg-black rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-input focus:ring-2 focus:ring-inset focus:ring-ring sm:text-sm sm:leading-6"
                                   placeholder="Leave a comment"
                                   defaultValue={""}
                                   onChange={(e) => setComment(e.target.value)}
@@ -455,7 +455,7 @@ export default function Ticket() {
                                   <button
                                     type="button"
                                     onClick={() => updateStatus()}
-                                    className="inline-flex justify-center items-center gap-x-1.5 rounded-md bg-white px-3 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+                                    className="inline-flex justify-center items-center gap-x-1.5 rounded-md bg-card px-3 py-1.5 text-sm font-semibold text-foreground shadow-sm ring-1 ring-inset ring-border hover:bg-muted"
                                   >
                                     <CheckCircleIcon
                                       className="-ml-0.5 h-5 w-5 text-red-500"
@@ -469,7 +469,7 @@ export default function Ticket() {
                                   <button
                                     type="button"
                                     onClick={() => updateStatus()}
-                                    className="inline-flex justify-center gap-x-1.5 rounded-md bg-white px-3 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+                                    className="inline-flex justify-center gap-x-1.5 rounded-md bg-card px-3 py-1.5 text-sm font-semibold text-foreground shadow-sm ring-1 ring-inset ring-border hover:bg-muted"
                                   >
                                     <CheckCircleIcon
                                       className="-ml-0.5 h-5 w-5 text-green-500"
@@ -481,7 +481,7 @@ export default function Ticket() {
                                 <button
                                   onClick={() => addComment()}
                                   type="submit"
-                                  className="inline-flex items-center justify-center rounded-md bg-gray-900 px-4 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-gray-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900"
+                                  className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-1.5 text-sm font-semibold text-primary-foreground shadow-sm hover:bg-primary/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
                                 >
                                   {t("comment")}
                                 </button>
@@ -521,37 +521,37 @@ export default function Ticket() {
                 )}
                 <div className="flex items-center space-x-2">
                   <ChatBubbleLeftEllipsisIcon
-                    className="h-5 w-5 text-gray-400 dark:text-white"
+                    className="h-5 w-5 text-muted-foreground dark:text-white"
                     aria-hidden="true"
                   />
-                  <span className="text-sm font-medium text-gray-900 dark:text-white">
+                  <span className="text-sm font-medium text-foreground dark:text-white">
                     {data.ticket.comments.length} {t("comments")}
                   </span>
                 </div>
                 <div className="flex flex-row items-center space-x-2">
                   <CalendarIcon
-                    className="h-5 w-5 text-gray-400 dark:text-white"
+                    className="h-5 w-5 text-muted-foreground dark:text-white"
                     aria-hidden="true"
                   />
-                  <span className="text-sm font-medium text-gray-900 dark:text-white">
+                  <span className="text-sm font-medium text-foreground dark:text-white">
                     {t("created_at")}
                   </span>
-                  <span className="text-sm font-medium text-gray-900 dark:text-white">
+                  <span className="text-sm font-medium text-foreground dark:text-white">
                     {moment(data.ticket.createdAt).format("DD/MM/YYYY")}
                   </span>
                 </div>
               </div>
-              <div className="mt-2 space-y-8 border-t border-gray-200 py-2">
+              <div className="mt-2 space-y-8 border-t border-border py-2">
                 <div>
                   <div className="flex flex-row justify-between items-center">
-                    <span className="text-sm font-medium text-gray-500 dark:text-white">
+                    <span className="text-sm font-medium text-muted-foreground dark:text-white">
                       {t("assignees")}
                     </span>
                   </div>
                   <ul role="list" className="mt-3 space-y-3">
                     <li className="flex justify-star items-center space-x-2">
                       <div className="flex-shrink-0">
-                        <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-gray-500">
+                        <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-muted-foreground">
                           <span className="text-xs font-medium leading-none text-white uppercase ">
                             {data.ticket.assignedTo
                               ? data.ticket.assignedTo.name[0]
@@ -559,7 +559,7 @@ export default function Ticket() {
                           </span>
                         </span>
                       </div>
-                      <div className="text-sm font-medium text-gray-900 dark:text-white">
+                      <div className="text-sm font-medium text-foreground dark:text-white">
                         {data.ticket.assignedTo
                           ? data.ticket.assignedTo.name
                           : ""}
@@ -567,16 +567,16 @@ export default function Ticket() {
                     </li>
                   </ul>
                 </div>
-                <div className="border-t border-gray-200">
+                <div className="border-t border-border">
                   <div className="flex flex-row items-center justify-between mt-2">
-                    <span className="text-sm font-medium text-gray-500 dark:text-white">
+                    <span className="text-sm font-medium text-muted-foreground dark:text-white">
                       {t("labels")}
                     </span>
                   </div>
                 </div>
-                <div className="border-t border-gray-200">
+                <div className="border-t border-border">
                   <div className="flex flex-row items-center justify-between mt-2">
-                    <span className="text-sm font-medium text-gray-500 dark:text-white">
+                    <span className="text-sm font-medium text-muted-foreground dark:text-white">
                       Time Tracking
                     </span>
                   </div>
