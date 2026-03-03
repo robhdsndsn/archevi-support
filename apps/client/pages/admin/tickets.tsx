@@ -24,7 +24,7 @@ const fetchALLTIckets = async () => {
 function DefaultColumnFilter({ column: { filterValue, setFilter } }: any) {
   return (
     <input
-      className="shadow-sm focus:ring-ring focus:border-ring block w-full sm:text-sm border-input rounded-md"
+      className="shadow-sm focus:ring-ring focus:border-ring block w-full sm:text-sm border-input rounded-md bg-background text-foreground px-3 py-1.5"
       type="text"
       value={filterValue || ""}
       onChange={(e) => {
@@ -165,7 +165,7 @@ function Table({ columns, data }: any) {
                   <select
                     id="location"
                     name="location"
-                    className="block w-full pl-3 pr-10 text-base border-input focus:outline-none focus:ring-ring focus:border-ring sm:text-sm rounded-md"
+                    className="block w-full pl-3 pr-10 text-base bg-background text-foreground border-input focus:outline-none focus:ring-ring focus:border-ring sm:text-sm rounded-md"
                     value={pageSize}
                     onChange={(e) => {
                       setPageSize(Number(e.target.value));

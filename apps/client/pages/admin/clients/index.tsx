@@ -166,7 +166,7 @@ function Table({ columns, data }: any) {
                   <select
                     id="location"
                     name="location"
-                    className="block w-full pl-3 pr-10 text-base border-input focus:outline-none focus:ring-ring focus:border-ring sm:text-sm rounded-md"
+                    className="block w-full pl-3 pr-10 text-base bg-background text-foreground border-input focus:outline-none focus:ring-ring focus:border-ring sm:text-sm rounded-md"
                     value={pageSize}
                     onChange={(e) => {
                       setPageSize(Number(e.target.value));

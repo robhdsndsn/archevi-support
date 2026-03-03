@@ -89,7 +89,7 @@ export default function CreateUser() {
                 <label className="text-foreground font-bold">Name</label>
                 <input
                   type="text"
-                  className="px-3 py-2 text-foreground bg-transparent border border-input rounded-md shadow-sm focus:outline-none focus:ring-ring focus:border-ring block w-full sm:text-sm"
+                  className="px-3 py-2 text-foreground bg-background border border-input rounded-md shadow-sm focus:outline-none focus:ring-ring focus:border-ring block w-full sm:text-sm"
                   placeholder="John Doe"
                   onChange={(e) => setName(e.target.value)}
                 />
@@ -98,7 +98,7 @@ export default function CreateUser() {
                 <label className="text-foreground font-bold">Email</label>
                 <input
                   type="text"
-                  className="px-3 py-2 text-foreground bg-transparent border border-input rounded-md shadow-sm focus:outline-none focus:ring-ring focus:border-ring block w-full sm:text-sm"
+                  className="px-3 py-2 text-foreground bg-background border border-input rounded-md shadow-sm focus:outline-none focus:ring-ring focus:border-ring block w-full sm:text-sm"
                   placeholder="John.Doe@test.com"
                   onChange={(e) => setEmail(e.target.value)}
                 />
@@ -108,7 +108,7 @@ export default function CreateUser() {
                   <label className="text-foreground font-bold">Password</label>
                   <input
                     type="text"
-                    className="px-3 py-2 text-foreground bg-transparent border border-input rounded-md shadow-sm focus:outline-none focus:ring-ring focus:border-ring block w-full sm:text-sm"
+                    className="px-3 py-2 text-foreground bg-background border border-input rounded-md shadow-sm focus:outline-none focus:ring-ring focus:border-ring block w-full sm:text-sm"
                     placeholder=""
                     onChange={(e) => setPassword(e.target.value)}
                   />
@@ -119,7 +119,7 @@ export default function CreateUser() {
                 <select
                   id="language"
                   name="language"
-                  className="mt-1 text-foreground bg-transparent block w-full pl-3 pr-10 py-2 text-base border border-input focus:outline-none focus:ring-ring focus:border-ring sm:text-sm rounded-md"
+                  className="mt-1 text-foreground bg-background block w-full pl-3 pr-10 py-2 text-base border border-input focus:outline-none focus:ring-ring focus:border-ring sm:text-sm rounded-md"
                   value={language}
                   onChange={(e) => setLanguage(e.target.value)}
                 >

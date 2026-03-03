@@ -189,7 +189,7 @@ export default function Authentication() {
                     id="providerType"
                     name="providerType"
                     onChange={(e) => setProviderType(e.target.value)}
-                    className="mt-2 block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-foreground ring-1 ring-inset ring-border focus:ring-2 focus:ring-ring sm:text-sm sm:leading-6"
+                    className="mt-2 block w-full rounded-md border-0 py-1.5 pl-3 pr-10 bg-background text-foreground ring-1 ring-inset ring-border focus:ring-2 focus:ring-ring sm:text-sm sm:leading-6"
                     value={providerType || ""}
                   >
                     <option value="" disabled>
@@ -221,7 +221,7 @@ export default function Authentication() {
                           <input
                             type="text"
                             id="issuer"
-                            className="block w-full rounded-md border-0 py-1.5 text-foreground shadow-sm ring-1 ring-inset ring-border placeholder:text-muted-foreground focus:ring-2 focus:ring-inset focus:ring-ring sm:text-sm sm:leading-6"
+                            className="block w-full rounded-md border-0 py-1.5 bg-background text-foreground shadow-sm ring-1 ring-inset ring-border placeholder:text-muted-foreground focus:ring-2 focus:ring-inset focus:ring-ring sm:text-sm sm:leading-6 px-3"
                             onChange={(e) => setIssuer(e.target.value)}
                           />
                         </div>
@@ -235,7 +235,7 @@ export default function Authentication() {
                           <input
                             type="text"
                             id="clientId"
-                            className="block w-full rounded-md border-0 py-1.5 text-foreground shadow-sm ring-1 ring-inset ring-border placeholder:text-muted-foreground focus:ring-2 focus:ring-inset focus:ring-ring sm:text-sm sm:leading-6"
+                            className="block w-full rounded-md border-0 py-1.5 bg-background text-foreground shadow-sm ring-1 ring-inset ring-border placeholder:text-muted-foreground focus:ring-2 focus:ring-inset focus:ring-ring sm:text-sm sm:leading-6 px-3"
                             onChange={(e) => setClientId(e.target.value)}
                           />
                         </div>
@@ -250,7 +250,7 @@ export default function Authentication() {
                           <input
                             type="text"
                             id="redirectUri"
-                            className="block w-full rounded-md border-0 py-1.5 text-foreground shadow-sm ring-1 ring-inset ring-border placeholder:text-muted-foreground focus:ring-2 focus:ring-inset focus:ring-ring sm:text-sm sm:leading-6"
+                            className="block w-full rounded-md border-0 py-1.5 bg-background text-foreground shadow-sm ring-1 ring-inset ring-border placeholder:text-muted-foreground focus:ring-2 focus:ring-inset focus:ring-ring sm:text-sm sm:leading-6 px-3"
                             onChange={(e) => setRedirectUri(e.target.value)}
                             value={redirectUri}
                           />
@@ -270,7 +270,7 @@ export default function Authentication() {
                             <input
                               type="text"
                               id="clientId"
-                              className="block w-full rounded-md border-0 py-1.5 text-foreground shadow-sm ring-1 ring-inset ring-border placeholder:text-muted-foreground focus:ring-2 focus:ring-inset focus:ring-ring sm:text-sm sm:leading-6"
+                              className="block w-full rounded-md border-0 py-1.5 bg-background text-foreground shadow-sm ring-1 ring-inset ring-border placeholder:text-muted-foreground focus:ring-2 focus:ring-inset focus:ring-ring sm:text-sm sm:leading-6 px-3"
                               onChange={(e) => setClientId(e.target.value)}
                             />
                           </div>
@@ -284,7 +284,7 @@ export default function Authentication() {
                             <input
                               type="text"
                               id="clientId"
-                              className="block w-full rounded-md border-0 py-1.5 text-foreground shadow-sm ring-1 ring-inset ring-border placeholder:text-muted-foreground focus:ring-2 focus:ring-inset focus:ring-ring sm:text-sm sm:leading-6"
+                              className="block w-full rounded-md border-0 py-1.5 bg-background text-foreground shadow-sm ring-1 ring-inset ring-border placeholder:text-muted-foreground focus:ring-2 focus:ring-inset focus:ring-ring sm:text-sm sm:leading-6 px-3"
                               onChange={(e) => setClientId(e.target.value)}
                             />
                           </div>
@@ -299,7 +299,7 @@ export default function Authentication() {
                             <input
                               type="text"
                               id="clientId"
-                              className="block w-full rounded-md border-0 py-1.5 text-foreground shadow-sm ring-1 ring-inset ring-border placeholder:text-muted-foreground focus:ring-2 focus:ring-inset focus:ring-ring sm:text-sm sm:leading-6"
+                              className="block w-full rounded-md border-0 py-1.5 bg-background text-foreground shadow-sm ring-1 ring-inset ring-border placeholder:text-muted-foreground focus:ring-2 focus:ring-inset focus:ring-ring sm:text-sm sm:leading-6 px-3"
                               onChange={(e) => setClientId(e.target.value)}
                             />
                           </div>
@@ -316,7 +316,7 @@ export default function Authentication() {
                       <input
                         type="text"
                         id="samlField"
-                        className="block w-full rounded-md border-0 py-1.5 text-foreground shadow-sm ring-1 ring-inset ring-border placeholder:text-muted-foreground focus:ring-2 focus:ring-inset focus:ring-ring sm:text-sm sm:leading-6"
+                        className="block w-full rounded-md border-0 py-1.5 bg-background text-foreground shadow-sm ring-1 ring-inset ring-border placeholder:text-muted-foreground focus:ring-2 focus:ring-inset focus:ring-ring sm:text-sm sm:leading-6 px-3"
                         onChange={(e) => setSomeSamlField(e.target.value)} // Adjust as needed
                       />
                     </div>
