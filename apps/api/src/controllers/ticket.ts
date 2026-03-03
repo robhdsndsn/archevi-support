@@ -153,6 +153,9 @@ export function ticketRoutes(fastify: FastifyInstance) {
           assignedTo: {
             select: { id: true, name: true },
           },
+          tags: {
+            select: { id: true, name: true, color: true },
+          },
         },
       });
 
@@ -226,6 +229,12 @@ export function ticketRoutes(fastify: FastifyInstance) {
           team: {
             select: { id: true, name: true },
           },
+          tags: {
+            select: { id: true, name: true, color: true },
+          },
+          _count: {
+            select: { Comment: true },
+          },
         },
       });
 
@@ -284,6 +293,12 @@ export function ticketRoutes(fastify: FastifyInstance) {
           team: {
             select: { id: true, name: true },
           },
+          tags: {
+            select: { id: true, name: true, color: true },
+          },
+          _count: {
+            select: { Comment: true },
+          },
         },
       });
 
@@ -313,6 +328,12 @@ export function ticketRoutes(fastify: FastifyInstance) {
           team: {
             select: { id: true, name: true },
           },
+          tags: {
+            select: { id: true, name: true, color: true },
+          },
+          _count: {
+            select: { Comment: true },
+          },
         },
       });
 
@@ -339,6 +360,12 @@ export function ticketRoutes(fastify: FastifyInstance) {
           },
           team: {
             select: { id: true, name: true },
+          },
+          tags: {
+            select: { id: true, name: true, color: true },
+          },
+          _count: {
+            select: { Comment: true },
           },
         },
       });
@@ -771,6 +798,12 @@ export function ticketRoutes(fastify: FastifyInstance) {
           team: {
             select: { id: true, name: true },
           },
+          tags: {
+            select: { id: true, name: true, color: true },
+          },
+          _count: {
+            select: { Comment: true },
+          },
         },
       });
 
@@ -799,6 +832,12 @@ export function ticketRoutes(fastify: FastifyInstance) {
           },
           team: {
             select: { id: true, name: true },
+          },
+          tags: {
+            select: { id: true, name: true, color: true },
+          },
+          _count: {
+            select: { Comment: true },
           },
         },
       });
@@ -830,6 +869,12 @@ export function ticketRoutes(fastify: FastifyInstance) {
           },
           team: {
             select: { id: true, name: true },
+          },
+          tags: {
+            select: { id: true, name: true, color: true },
+          },
+          _count: {
+            select: { Comment: true },
           },
         },
       });

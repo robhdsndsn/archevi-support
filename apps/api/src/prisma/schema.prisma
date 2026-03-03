@@ -142,6 +142,7 @@ model Ticket {
   TicketFile   TicketFile[]
   Comment      Comment[]
   TimeTracking TimeTracking[]
+  tags         Tag[]
 
   team       Team?   @relation(fields: [teamId], references: [id])
   teamId     String?
@@ -152,6 +153,15 @@ model Ticket {
 
   knowledgeBase knowledgeBase[]
   notifications notifications[]
+}
+
+model Tag {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+  name      String   @unique
+  color     String   @default("#6b7280")
+  tickets   Ticket[]
 }
 
 model TimeTracking {

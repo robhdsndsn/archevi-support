@@ -8,6 +8,7 @@ import { useRouter } from "next/router";
 import { getCookie } from "cookies-next";
 import moment from "moment";
 import { useUser } from "../store/session";
+import { getPriorityColor, getTypeColor, normalizePriority } from "../lib/ticket-utils";
 
 export default function Home() {
   const router = useRouter();
@@ -134,10 +135,10 @@ export default function Home() {
                       key={item.name}
                       className="px-4 py-5 bg-card shadow rounded-lg overflow-hidden sm:p-6"
                     >
-                      <dt className="text-sm font-medium text-white truncate">
+                      <dt className="text-sm font-medium text-card-foreground truncate">
                         {item.name}
                       </dt>
-                      <dd className="mt-1 text-3xl font-semibold text-white">
+                      <dd className="mt-1 text-3xl font-semibold text-card-foreground">
                         {item.stat}
                       </dd>
                     </div>
@@ -181,32 +182,43 @@ export default function Home() {
                         <tr>
                           <th
                             scope="col"
-                            className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-foreground dark:text-white sm:pl-0"
+                            className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-foreground sm:pl-0 w-[50px]"
+                          >
+                            #
+                          </th>
+                          <th
+                            scope="col"
+                            className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-foreground sm:pl-0"
                           >
                             {t("title")}
                           </th>
                           <th
                             scope="col"
-                            className="hidden px-3 py-3.5 text-left text-sm font-semibold text-foreground dark:text-white lg:table-cell"
+                            className="hidden px-3 py-3.5 text-left text-sm font-semibold text-foreground lg:table-cell"
+                          >
+                            Type
+                          </th>
+                          <th
+                            scope="col"
+                            className="hidden px-3 py-3.5 text-left text-sm font-semibold text-foreground lg:table-cell"
                           >
                             {t("priority")}
                           </th>
                           <th
                             scope="col"
-                            className="hidden px-3 py-3.5 text-left text-sm font-semibold text-foreground dark:text-white sm:table-cell"
+                            className="hidden px-3 py-3.5 text-left text-sm font-semibold text-foreground sm:table-cell"
                           >
                             {t("status")}
                           </th>
                           <th
                             scope="col"
-                            className="px-3 py-3.5 text-left text-sm font-semibold text-foreground dark:text-white"
+                            className="px-3 py-3.5 text-left text-sm font-semibold text-foreground"
                           >
                             {t("created")}
                           </th>
-
                           <th
                             scope="col"
-                            className="px-3 py-3.5 text-left text-sm font-semibold text-foreground dark:text-white"
+                            className="px-3 py-3.5 text-left text-sm font-semibold text-foreground"
                           >
                             {t("assigned_to")}
                           </th>
@@ -217,10 +229,13 @@ export default function Home() {
                           tickets.slice(0, 10).map((item: any) => (
                             <tr
                               key={item.id}
-                              className="hover:bg-muted dark:hover:bg-primary/90 hover:cursor-pointer"
+                              className="hover:bg-muted dark:hover:bg-muted hover:cursor-pointer"
                               onClick={() => router.push(`/issue/${item.id}`)}
                             >
-                              <td className="sm:max-w-[280px] 2xl:max-w-[720px] truncate py-1 pl-4 pr-3 text-sm font-medium text-foreground dark:text-white sm:pl-0">
+                              <td className="py-1 pl-4 pr-3 text-sm font-medium text-muted-foreground sm:pl-0 w-[50px]">
+                                #{item.Number}
+                              </td>
+                              <td className="sm:max-w-[280px] 2xl:max-w-[720px] truncate py-1 pl-4 pr-3 text-sm font-medium text-foreground sm:pl-0">
                                 {item.title}
                                 <dl className="font-normal lg:hidden">
                                   <dt className="sr-only sm:hidden">Email</dt>
@@ -229,22 +244,19 @@ export default function Home() {
                                   </dd>
                                 </dl>
                               </td>
-                              <td className="hidden px-3 py-1 text-sm text-muted-foreground lg:table-cell w-[64px]">
-                                {item.priority === "Low" && (
-                                  <span className="inline-flex w-full justify-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700  ring-1 ring-inset ring-blue-600/20">
-                                    {item.priority}
-                                  </span>
-                                )}
-                                {item.priority === "Normal" && (
-                                  <span className="inline-flex items-center w-full justify-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">
-                                    {item.priority}
-                                  </span>
-                                )}
-                                {item.priority === "High" && (
-                                  <span className="inline-flex items-center w-full justify-center rounded-md bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/20">
-                                    {item.priority}
-                                  </span>
-                                )}
+                              <td className="hidden px-3 py-1 text-sm text-muted-foreground lg:table-cell w-[90px]">
+                                <span
+                                  className={`inline-flex items-center w-full justify-center rounded-md px-2 py-1 text-xs font-medium capitalize ring-1 ring-inset ${getTypeColor(item.type)}`}
+                                >
+                                  {item.type}
+                                </span>
+                              </td>
+                              <td className="hidden px-3 py-1 text-sm text-muted-foreground lg:table-cell w-[90px]">
+                                <span
+                                  className={`inline-flex items-center w-full justify-center rounded-md px-2 py-1 text-xs font-medium capitalize ring-1 ring-inset ${getPriorityColor(item.priority)}`}
+                                >
+                                  {normalizePriority(item.priority)}
+                                </span>
                               </td>
                               <td className="hidden px-3 py-1 text-sm text-muted-foreground sm:table-cell w-[64px]">
                                 {item.isComplete === true ? (
@@ -275,11 +287,11 @@ export default function Home() {
                                   </>
                                 )}
                               </td>
-                              <td className="px-3 py-1 text-sm text-muted-foreground dark:text-white w-[110px]">
+                              <td className="px-3 py-1 text-sm text-muted-foreground w-[110px]">
                                 {moment(item.createdAt).format("DD/MM/YYYY")}
                               </td>
-                              <td className="px-3 py-1 text-sm text-muted-foreground w-[130px] dark:text-white truncate whitespace-nowrap">
-                                {item.assignedTo ? item.assignedTo.name : "-"}
+                              <td className="px-3 py-1 text-sm text-muted-foreground w-[130px] truncate whitespace-nowrap">
+                                {item.assignedTo ? item.assignedTo.name : <span className="italic text-muted-foreground/60">Unassigned</span>}
                               </td>
                             </tr>
                           ))}

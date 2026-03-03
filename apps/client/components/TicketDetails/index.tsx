@@ -59,7 +59,9 @@ import {
   Unlock,
 } from "lucide-react";
 import { useUser } from "../../store/session";
+import { getTypeColor } from "../../lib/ticket-utils";
 import { IconCombo, UserCombo } from "../Combo";
+import TagSelector from "../TagSelector";
 
 const ticketStatusMap = [
   { id: 1, value: "needs_support", name: "Needs Support", icon: LifeBuoy },
@@ -82,7 +84,7 @@ const priorityOptions = [
     icon: SignalMedium,
   },
   {
-    id: "1",
+    id: "3",
     name: "High",
     value: "high",
     icon: SignalHigh,
@@ -690,7 +692,7 @@ export default function Ticket() {
                             )}
                           </div>
                           <div>
-                            <span className="inline-flex items-center rounded-md bg-orange-50 px-2 py-1 text-xs font-medium text-orange-700 ring-1 ring-inset ring-orange-600/20">
+                            <span className={`inline-flex items-center rounded-md px-2 py-1 text-xs font-medium capitalize ring-1 ring-inset ${getTypeColor(data.ticket.type)}`}>
                               {data.ticket.type}
                             </span>
                           </div>
@@ -911,6 +913,11 @@ export default function Ticket() {
                             </>
                           )}
                         </div>
+                        {data.ticket.updatedAt && data.ticket.updatedAt !== data.ticket.createdAt && (
+                          <div className="text-xs text-muted-foreground mt-1">
+                            Last updated {moment(data.ticket.updatedAt).fromNow()}
+                          </div>
+                        )}
                       </div>
                       <div className="">
                         <ul role="list" className="space-y-2">
@@ -1103,6 +1110,13 @@ export default function Ticket() {
                       value={ticketStatusMap}
                       update={setTicketStatus}
                       defaultName={data.ticket.status ? data.ticket.status : ""}
+                      disabled={data.ticket.locked}
+                    />
+
+                    <TagSelector
+                      ticketId={data.ticket.id}
+                      initialTags={data.ticket.tags || []}
+                      onTagsChange={() => refetch()}
                       disabled={data.ticket.locked}
                     />
 

@@ -27,11 +27,13 @@ import {
 } from "@/shadcn/ui/context-menu";
 import { Popover, PopoverContent, PopoverTrigger } from "@/shadcn/ui/popover";
 import { getCookie } from "cookies-next";
-import { CheckIcon, Filter, X } from "lucide-react";
+import { ArrowDownUp, CheckIcon, Filter, X } from "lucide-react";
 import moment from "moment";
 import Link from "next/link";
 import { useQuery } from "react-query";
 import { useUser } from "../../store/session";
+import { getPriorityColor, getTypeColor, normalizePriority } from "../../lib/ticket-utils";
+import TicketRow from "../../components/TicketRow";
 
 async function getUserTickets(token: any) {
   const res = await fetch(`/api/v1/tickets/user/open`, {
@@ -78,9 +80,7 @@ export default function Tickets() {
 
   const user = useUser();
 
-  const high = "bg-red-100 text-red-800";
-  const low = "bg-blue-100 text-blue-800";
-  const normal = "bg-green-100 text-green-800";
+  // Priority/type colors now handled by ticket-utils
 
   const [filterSelected, setFilterSelected] = useState();
   const [selectedPriorities, setSelectedPriorities] = useState<string[]>(() => {
@@ -95,27 +95,34 @@ export default function Tickets() {
     const saved = localStorage.getItem('open_selectedAssignees');
     return saved ? JSON.parse(saved) : [];
   });
+  const [selectedTypes, setSelectedTypes] = useState<string[]>(() => {
+    const saved = localStorage.getItem('open_selectedTypes');
+    return saved ? JSON.parse(saved) : [];
+  });
+  const [selectedTags, setSelectedTags] = useState<string[]>(() => {
+    const saved = localStorage.getItem('open_selectedTags');
+    return saved ? JSON.parse(saved) : [];
+  });
+  const [sortBy, setSortBy] = useState<"createdAt" | "updatedAt">(() => {
+    return (localStorage.getItem('open_sortBy') as "createdAt" | "updatedAt") || "createdAt";
+  });
   const [users, setUsers] = useState<any[]>([]);
 
   useEffect(() => {
     localStorage.setItem('open_selectedPriorities', JSON.stringify(selectedPriorities));
-  }, [selectedPriorities]);
-
-  useEffect(() => {
     localStorage.setItem('open_selectedStatuses', JSON.stringify(selectedStatuses));
-  }, [selectedStatuses]);
-
-  useEffect(() => {
     localStorage.setItem('open_selectedAssignees', JSON.stringify(selectedAssignees));
-  }, [selectedAssignees]);
+    localStorage.setItem('open_selectedTypes', JSON.stringify(selectedTypes));
+    localStorage.setItem('open_selectedTags', JSON.stringify(selectedTags));
+    localStorage.setItem('open_sortBy', sortBy);
+  }, [selectedPriorities, selectedStatuses, selectedAssignees, selectedTypes, selectedTags, sortBy]);
 
   const clearAllFilters = () => {
     setSelectedPriorities([]);
     setSelectedStatuses([]);
     setSelectedAssignees([]);
-    localStorage.removeItem('open_selectedPriorities');
-    localStorage.removeItem('open_selectedStatuses');
-    localStorage.removeItem('open_selectedAssignees');
+    setSelectedTypes([]);
+    setSelectedTags([]);
   };
 
   const handlePriorityToggle = (priority: string) => {
@@ -142,23 +149,46 @@ export default function Tickets() {
     );
   };
 
-  const filteredTickets = data
-    ? data.tickets.filter((ticket) => {
-        const priorityMatch =
-          selectedPriorities.length === 0 ||
-          selectedPriorities.includes(ticket.priority);
-        const statusMatch =
-          selectedStatuses.length === 0 ||
-          selectedStatuses.includes(ticket.isComplete ? "closed" : "open");
-        const assigneeMatch =
-          selectedAssignees.length === 0 ||
-          selectedAssignees.includes(ticket.assignedTo?.name || "Unassigned");
+  const handleTypeToggle = (type: string) => {
+    setSelectedTypes((prev) =>
+      prev.includes(type) ? prev.filter((t) => t !== type) : [...prev, type]
+    );
+  };
 
-        return priorityMatch && statusMatch && assigneeMatch;
-      })
+  const handleTagToggle = (tag: string) => {
+    setSelectedTags((prev) =>
+      prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag]
+    );
+  };
+
+  const filteredTickets = data
+    ? data.tickets
+        .filter((ticket) => {
+          const priorityMatch =
+            selectedPriorities.length === 0 ||
+            selectedPriorities.includes(normalizePriority(ticket.priority));
+          const statusMatch =
+            selectedStatuses.length === 0 ||
+            selectedStatuses.includes(ticket.isComplete ? "closed" : "open");
+          const assigneeMatch =
+            selectedAssignees.length === 0 ||
+            selectedAssignees.includes(ticket.assignedTo?.name || "Unassigned");
+          const typeMatch =
+            selectedTypes.length === 0 || selectedTypes.includes(ticket.type);
+          const tagMatch =
+            selectedTags.length === 0 ||
+            (ticket.tags && ticket.tags.some((tag: any) => selectedTags.includes(tag.name)));
+
+          return priorityMatch && statusMatch && assigneeMatch && typeMatch && tagMatch;
+        })
+        .sort((a, b) => {
+          const dateA = new Date(a[sortBy]).getTime();
+          const dateB = new Date(b[sortBy]).getTime();
+          return dateB - dateA;
+        })
     : [];
 
-  type FilterType = "priority" | "status" | "assignee" | null;
+  type FilterType = "priority" | "status" | "assignee" | "type" | "tag" | null;
   const [activeFilter, setActiveFilter] = useState<FilterType>(null);
   const [filterSearch, setFilterSearch] = useState("");
 
@@ -182,6 +212,22 @@ export default function Tickets() {
       .filter((name, index, self) => self.indexOf(name) === index);
     return assignees?.filter((assignee) =>
       assignee.toLowerCase().includes(filterSearch.toLowerCase())
+    );
+  }, [data?.tickets, filterSearch]);
+
+  const ticketTypes = ["bug", "feature", "support", "incident", "service", "maintenance", "access", "feedback"];
+  const filteredTypes = useMemo(() => {
+    return ticketTypes.filter((type) =>
+      type.toLowerCase().includes(filterSearch.toLowerCase())
+    );
+  }, [filterSearch]);
+
+  const filteredTagOptions = useMemo(() => {
+    const tagNames = data?.tickets
+      ?.flatMap((t: any) => t.tags?.map((tag: any) => tag.name) || [])
+      .filter((name: string, index: number, self: string[]) => self.indexOf(name) === index) || [];
+    return tagNames.filter((name: string) =>
+      name.toLowerCase().includes(filterSearch.toLowerCase())
     );
   }, [data?.tickets, filterSearch]);
 
@@ -340,6 +386,16 @@ export default function Tickets() {
                             >
                               Assigned To
                             </CommandItem>
+                            <CommandItem
+                              onSelect={() => setActiveFilter("type")}
+                            >
+                              Type
+                            </CommandItem>
+                            <CommandItem
+                              onSelect={() => setActiveFilter("tag")}
+                            >
+                              Tag
+                            </CommandItem>
                           </CommandGroup>
                         </CommandList>
                       </Command>
@@ -472,40 +528,89 @@ export default function Tickets() {
                           </CommandGroup>
                         </CommandList>
                       </Command>
+                    ) : activeFilter === "type" ? (
+                      <Command>
+                        <CommandInput placeholder="Search type..." value={filterSearch} onValueChange={setFilterSearch} />
+                        <CommandList>
+                          <CommandEmpty>No types found.</CommandEmpty>
+                          <CommandGroup heading="Type">
+                            {filteredTypes.map((type) => (
+                              <CommandItem key={type} onSelect={() => handleTypeToggle(type)}>
+                                <div className={cn("mr-2 flex h-4 w-4 items-center justify-center rounded-sm border border-primary", selectedTypes.includes(type) ? "bg-primary text-primary-foreground" : "opacity-50 [&_svg]:invisible")}>
+                                  <CheckIcon className={cn("h-4 w-4")} />
+                                </div>
+                                <span className="capitalize">{type}</span>
+                              </CommandItem>
+                            ))}
+                          </CommandGroup>
+                          <CommandSeparator />
+                          <CommandGroup>
+                            <CommandItem onSelect={() => { setActiveFilter(null); setFilterSearch(""); }} className="justify-center text-center">Back to filters</CommandItem>
+                          </CommandGroup>
+                        </CommandList>
+                      </Command>
+                    ) : activeFilter === "tag" ? (
+                      <Command>
+                        <CommandInput placeholder="Search tag..." value={filterSearch} onValueChange={setFilterSearch} />
+                        <CommandList>
+                          <CommandEmpty>No tags found.</CommandEmpty>
+                          <CommandGroup heading="Tag">
+                            {filteredTagOptions.map((tag) => (
+                              <CommandItem key={tag} onSelect={() => handleTagToggle(tag)}>
+                                <div className={cn("mr-2 flex h-4 w-4 items-center justify-center rounded-sm border border-primary", selectedTags.includes(tag) ? "bg-primary text-primary-foreground" : "opacity-50 [&_svg]:invisible")}>
+                                  <CheckIcon className={cn("h-4 w-4")} />
+                                </div>
+                                <span>{tag}</span>
+                              </CommandItem>
+                            ))}
+                          </CommandGroup>
+                          <CommandSeparator />
+                          <CommandGroup>
+                            <CommandItem onSelect={() => { setActiveFilter(null); setFilterSearch(""); }} className="justify-center text-center">Back to filters</CommandItem>
+                          </CommandGroup>
+                        </CommandList>
+                      </Command>
                     ) : null}
                   </PopoverContent>
                 </Popover>
 
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="h-6 bg-transparent"
+                  onClick={() => setSortBy(sortBy === "createdAt" ? "updatedAt" : "createdAt")}
+                  title={`Sort by ${sortBy === "createdAt" ? "updated" : "created"}`}
+                >
+                  <ArrowDownUp className="mr-2 h-4 w-4" />
+                  <span className="hidden sm:block text-xs">
+                    {sortBy === "createdAt" ? "Created" : "Updated"}
+                  </span>
+                </Button>
+
                 {/* Display selected filters */}
                 <div className="flex flex-wrap gap-2">
                   {selectedPriorities.map((priority) => (
-                    <FilterBadge
-                      key={`priority-${priority}`}
-                      text={`Priority: ${priority}`}
-                      onRemove={() => handlePriorityToggle(priority)}
-                    />
+                    <FilterBadge key={`priority-${priority}`} text={`Priority: ${priority}`} onRemove={() => handlePriorityToggle(priority)} />
                   ))}
-
                   {selectedStatuses.map((status) => (
-                    <FilterBadge
-                      key={`status-${status}`}
-                      text={`Status: ${status}`}
-                      onRemove={() => handleStatusToggle(status)}
-                    />
+                    <FilterBadge key={`status-${status}`} text={`Status: ${status}`} onRemove={() => handleStatusToggle(status)} />
                   ))}
-
                   {selectedAssignees.map((assignee) => (
-                    <FilterBadge
-                      key={`assignee-${assignee}`}
-                      text={`Assignee: ${assignee}`}
-                      onRemove={() => handleAssigneeToggle(assignee)}
-                    />
+                    <FilterBadge key={`assignee-${assignee}`} text={`Assignee: ${assignee}`} onRemove={() => handleAssigneeToggle(assignee)} />
+                  ))}
+                  {selectedTypes.map((type) => (
+                    <FilterBadge key={`type-${type}`} text={`Type: ${type}`} onRemove={() => handleTypeToggle(type)} />
+                  ))}
+                  {selectedTags.map((tag) => (
+                    <FilterBadge key={`tag-${tag}`} text={`Tag: ${tag}`} onRemove={() => handleTagToggle(tag)} />
                   ))}
 
                   {/* Clear all filters button - only show if there are filters */}
                   {(selectedPriorities.length > 0 ||
                     selectedStatuses.length > 0 ||
-                    selectedAssignees.length > 0) && (
+                    selectedAssignees.length > 0 ||
+                    selectedTypes.length > 0 ||
+                    selectedTags.length > 0) && (
                     <Button
                       variant="ghost"
                       size="sm"
@@ -521,91 +626,10 @@ export default function Tickets() {
             </div>
             {filteredTickets.length > 0 ? (
               filteredTickets.map((ticket) => {
-                let p = ticket.priority;
-                let badge;
-
-                if (p === "Low") {
-                  badge = low;
-                }
-                if (p === "Normal") {
-                  badge = normal;
-                }
-                if (p === "high") {
-                  badge = high;
-                }
-
                 return (
                   <ContextMenu>
                     <ContextMenuTrigger>
-                      <Link href={`/issue/${ticket.id}`}>
-                        <div className="flex flex-row w-full bg-card dark:bg-background dark:hover:bg-primary/90 border-b-[1px] p-1.5 justify-between px-6 hover:bg-muted">
-                          <div className="flex flex-row items-center space-x-4">
-                            <span className="text-xs font-semibold">
-                              #{ticket.Number}
-                            </span>
-                            <span className="text-xs font-semibold">
-                              {ticket.title}
-                            </span>
-                          </div>
-                          <div className="flex flex-row space-x-3 items-center">
-                            <div>
-                              <span className="text-xs">
-                                {moment(ticket.createdAt).format("DD/MM/yyyy")}
-                              </span>
-                            </div>
-                            <div>
-                              <span
-                                className={`inline-flex items-center rounded-md px-2 py-1 capitalize justify-center w-20 text-xs font-medium ring-1 ring-inset ring-gray-500/10 bg-orange-400 text-white`}
-                              >
-                                {ticket.type}
-                              </span>
-                            </div>
-                            <div>
-                              {ticket.isComplete === true ? (
-                                <div>
-                                  <span className="inline-flex items-center gap-x-1.5 rounded-md bg-red-100 px-2 w-20 justify-center py-1 text-xs ring-1 ring-inset ring-gray-500/10 font-medium text-red-700">
-                                    <svg
-                                      className="h-1.5 w-1.5 fill-red-500"
-                                      viewBox="0 0 6 6"
-                                      aria-hidden="true"
-                                    >
-                                      <circle cx={3} cy={3} r={3} />
-                                    </svg>
-                                    {t("closed")}
-                                  </span>
-                                </div>
-                              ) : (
-                                <>
-                                  <span className="inline-flex items-center gap-x-1.5  rounded-md w-20 justify-center font-medium bg-green-100 ring-1 ring-inset ring-gray-500/10 px-2 py-1 text-xs text-green-700">
-                                    <svg
-                                      className="h-1.5 w-1.5 fill-green-500"
-                                      viewBox="0 0 6 6"
-                                      aria-hidden="true"
-                                    >
-                                      <circle cx={3} cy={3} r={3} />
-                                    </svg>
-                                    {t("open")}
-                                  </span>
-                                </>
-                              )}
-                            </div>
-                            <div>
-                              <span
-                                className={`inline-flex items-center rounded-md px-2 py-1 capitalize justify-center w-20 text-xs font-medium ring-1 ring-inset ring-gray-500/10 ${badge}`}
-                              >
-                                {ticket.priority}
-                              </span>
-                            </div>
-                            <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-muted-foreground">
-                              <span className="text-[11px] font-medium leading-none text-white uppercase">
-                                {ticket.assignedTo
-                                  ? ticket.assignedTo.name[0]
-                                  : ""}
-                              </span>
-                            </span>
-                          </div>
-                        </div>
-                      </Link>
+                      <TicketRow ticket={ticket} />
                     </ContextMenuTrigger>
                     <ContextMenuContent className="w-52">
                       <ContextMenuItem
