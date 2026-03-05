@@ -16,8 +16,27 @@ export async function sendTicketCreate(ticket: any) {
       });
 
       var template = handlebars.compile(testhtml?.html);
+
+      // Parse detail back from JSON string if needed
+      let description = ticket.detail || '';
+      try {
+        const parsed = JSON.parse(description);
+        if (typeof parsed === 'object' && parsed.content) {
+          // Tiptap JSON - extract text
+          description = parsed.content
+            .map((block: any) => block.content?.map((c: any) => c.text).join('') || '')
+            .join('\n');
+        } else if (typeof parsed === 'string') {
+          description = parsed;
+        }
+      } catch {
+        // Already plain text
+      }
+
       var replacements = {
         id: ticket.id,
+        title: ticket.title || `Ticket #${ticket.id}`,
+        description,
       };
       var htmlToSend = template(replacements);
 
