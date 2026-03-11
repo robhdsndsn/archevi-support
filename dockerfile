@@ -27,6 +27,8 @@ COPY apps/client ./apps/client
 RUN cd apps/api && npm i --save-dev @types/node && npm run build
 
 # Build Client (Next.js standalone output)
+ARG NEXT_PUBLIC_CLIENT_VERSION=0.5.5
+ENV NEXT_PUBLIC_CLIENT_VERSION=${NEXT_PUBLIC_CLIENT_VERSION}
 RUN cd apps/client && yarn build
 
 # --- Runner stage: slim image (saves ~800MB vs node:lts) ---

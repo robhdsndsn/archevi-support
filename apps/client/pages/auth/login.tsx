@@ -38,7 +38,7 @@ export default function Login({}) {
               variant: "destructive",
               title: "Error",
               description:
-                "There was an error logging in, please try again. If this issue persists, please contact support via the discord.",
+                "There was an error logging in. Please try again or contact support at hello@archevi.com.",
             });
           }
         });
@@ -46,9 +46,9 @@ export default function Login({}) {
       console.error(error);
       toast({
         variant: "destructive",
-        title: "Database Error",
+        title: "Error",
         description:
-          "This is an issue with the database, please check the docker logs or contact support via discord.",
+          "Unable to connect. Please try again or contact support at hello@archevi.com.",
       });
     }
   }
@@ -84,6 +84,13 @@ export default function Login({}) {
   return (
     <div className="min-h-screen bg-background flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
+        <a href="https://archevi.com" target="_blank" rel="noopener noreferrer">
+          <img
+            className="mx-auto h-36 w-auto"
+            src="/logo.svg"
+            alt="Archevi logo"
+          />
+        </a>
         <h2 className="mt-6 text-center text-3xl font-extrabold text-foreground">
           Archevi Support
         </h2>
@@ -94,7 +101,13 @@ export default function Login({}) {
           <div className="text-center mr-4">{/* <Loader size={32} /> */}</div>
         ) : (
           <div className="bg-background py-8 px-4 shadow sm:rounded-lg sm:px-10">
-            <div className="space-y-4">
+            <form
+              className="space-y-4"
+              onSubmit={(e) => {
+                e.preventDefault();
+                postData();
+              }}
+            >
               <div>
                 <label
                   htmlFor="email"
@@ -111,11 +124,6 @@ export default function Login({}) {
                     required
                     onChange={(e) => setEmail(e.target.value)}
                     className="appearance-none block w-full px-3 py-2 border text-foreground border-input rounded-md shadow-sm placeholder-muted-foreground focus:outline-none focus:ring-ring focus:border-ring sm:text-sm"
-                    onKeyPress={(event) => {
-                      if (event.key === "Enter") {
-                        postData();
-                      }
-                    }}
                   />
                 </div>
               </div>
@@ -132,15 +140,10 @@ export default function Login({}) {
                     id="password"
                     name="password"
                     type="password"
-                    autoComplete="password"
+                    autoComplete="current-password"
                     required
                     onChange={(e) => setPassword(e.target.value)}
                     className="appearance-none block w-full px-3 py-2 border text-foreground border-input rounded-md shadow-sm placeholder-muted-foreground focus:outline-none focus:ring-ring focus:border-ring sm:text-sm"
-                    onKeyPress={(event) => {
-                      if (event.key === "Enter") {
-                        postData();
-                      }
-                    }}
                   />
                 </div>
               </div>
@@ -159,7 +162,6 @@ export default function Login({}) {
               <div className="flex flex-col space-y-4">
                 <button
                   type="submit"
-                  onClick={postData}
                   className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-primary-foreground bg-primary hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-ring"
                 >
                   Sign In
@@ -167,7 +169,7 @@ export default function Login({}) {
 
                 {url && (
                   <button
-                    type="submit"
+                    type="button"
                     onClick={() => router.push(url)}
                     className="w-full flex justify-center py-2 px-4 border rounded-md shadow-sm text-sm font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-ring"
                   >
@@ -175,7 +177,7 @@ export default function Login({}) {
                   </button>
                 )}
               </div>
-            </div>
+            </form>
           </div>
         )}
 
@@ -183,6 +185,7 @@ export default function Login({}) {
           <a
             href="https://archevi.com"
             target="_blank"
+            rel="noopener noreferrer"
             className="text-foreground"
           >
             archevi.com

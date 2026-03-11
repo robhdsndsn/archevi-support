@@ -17,7 +17,6 @@ export default function Login({}) {
       .then((res) => res.json())
       .then((res) => {
         if (res.success) {
-
           toast({
             variant: "default",
             title: "Success",
@@ -27,9 +26,9 @@ export default function Login({}) {
         } else {
           toast({
             variant: "destructive",
-            title: "Error", 
+            title: "Error",
             description:
-              "There was an error with this request, please try again. If this issue persists, please contact support via the discord.",
+              "There was an error with this request. Please try again or contact support at hello@archevi.com.",
           });
         }
       });
@@ -38,7 +37,7 @@ export default function Login({}) {
   return (
     <div className="min-h-screen bg-background flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
-        <a target="_blank" href="https://archevi.com">
+        <a target="_blank" rel="noopener noreferrer" href="https://archevi.com">
           <img
             className="mx-auto h-36 w-auto"
             src="/logo.svg"
@@ -52,7 +51,13 @@ export default function Login({}) {
 
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         <div className="bg-card py-8 px-4 shadow sm:rounded-lg sm:px-10">
-          <div className="space-y-4">
+          <form
+            className="space-y-4"
+            onSubmit={(e) => {
+              e.preventDefault();
+              postData();
+            }}
+          >
             <div>
               <label
                 htmlFor="email"
@@ -87,17 +92,16 @@ export default function Login({}) {
             <div>
               <button
                 type="submit"
-                onClick={postData}
                 className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-primary-foreground bg-primary hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-ring"
               >
                 Submit Request
               </button>
             </div>
-          </div>
+          </form>
         </div>
 
         <div className="mt-8 text-center flex flex-col space-y-2">
-          <a href="https://archevi.com" target="_blank">
+          <a href="https://archevi.com" target="_blank" rel="noopener noreferrer">
             archevi.com
           </a>
         </div>

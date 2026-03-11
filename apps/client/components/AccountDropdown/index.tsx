@@ -128,11 +128,11 @@ export function AccountDropdown() {
           }
         >
           <Github className="mr-2 h-4 w-4" />
-          <span>GitHub</span>
+          <span>Archevi</span>
         </DropdownMenuItem>
         <DropdownMenuItem
           className="hover:cursor-pointer"
-          onClick={() => router.push("https://discord.gg/XDxnWxCqnc")}
+          onClick={() => router.push("mailto:hello@archevi.com")}
         >
           <LifeBuoy className="mr-2 h-4 w-4" />
           <span>Support</span>

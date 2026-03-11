@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 
 import { getCookie } from "cookies-next";
+import { LifeBuoy } from "lucide-react";
 import Link from "next/link";
 import { useUser } from "../store/session";
 
@@ -76,20 +77,20 @@ export default function Home() {
                 </Link>
               </div>
               <div className="border p-2 md:p-6 rounded-md border-dashed flex flex-col md:flex-row space-x-4 items-center ">
-                <img src="/discord.svg" className="h-10 w-10" />
+                <LifeBuoy className="h-10 w-10 text-primary" />
                 <div className="flex flex-col align-center lg:w-[36em]">
-                  <span className="font-bold text-lg">Discord</span>
+                  <span className="font-bold text-lg">Support</span>
                   <span className="max-w-lg text-xs md:text-md">
-                    Join our discord server to get help from the community or
-                    the developers. Not a bad place to hang out either.
+                    Need help? Reach out to our support team and we will get
+                    back to you as soon as possible.
                   </span>
                 </div>
                 <Link
                   target="_blank"
-                  href="https://discord.gg/zbTy8nuHnK"
-                  className="rounded-md bg-blue-600 mt-4 whitespace-nowrap sm:mt-0 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 "
+                  href="mailto:hello@archevi.com"
+                  className="rounded-md bg-primary mt-4 whitespace-nowrap sm:mt-0 px-2.5 py-1.5 text-sm font-semibold text-primary-foreground shadow-sm hover:bg-primary/90 "
                 >
-                  Check it out
+                  Contact Us
                 </Link>
               </div>
             </div>

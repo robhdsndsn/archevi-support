@@ -27,6 +27,10 @@ module.exports = withPlugins(
           source: '/api/v1/:path*',
           destination: 'http://localhost:5003/api/v1/:path*',
         },
+        {
+          source: '/favicon.ico',
+          destination: '/favicon/favicon.ico',
+        },
       ];
     },
   }

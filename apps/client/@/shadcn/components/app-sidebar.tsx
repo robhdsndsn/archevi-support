@@ -51,7 +51,9 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     teams: [
       {
         name: "Archevi Support",
-        plan: `version: ${process.env.NEXT_PUBLIC_CLIENT_VERSION}`,
+        plan: process.env.NEXT_PUBLIC_CLIENT_VERSION
+          ? `v${process.env.NEXT_PUBLIC_CLIENT_VERSION}`
+          : "Support",
       },
     ],
     navMain: [
@@ -173,7 +175,9 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           <div className="grid flex-1 text-left text-sm leading-tight">
             <span className="truncate font-semibold text-xl">Archevi</span>
             <span className="truncate text-xs">
-              version: {process.env.NEXT_PUBLIC_CLIENT_VERSION}
+              {process.env.NEXT_PUBLIC_CLIENT_VERSION
+                ? `v${process.env.NEXT_PUBLIC_CLIENT_VERSION}`
+                : "Support"}
             </span>
           </div>
         </div>
