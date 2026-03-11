@@ -450,22 +450,31 @@ export function ticketRoutes(fastify: FastifyInstance) {
       preHandler: requirePermission(["issue::update"]),
     },
     async (request: FastifyRequest, reply: FastifyReply) => {
-      const { id, note, detail, title, priority, status }: any = request.body;
+      try {
+        const { id, note, detail, title, priority, status }: any =
+          request.body;
 
-      await prisma.ticket.update({
-        where: { id: id },
-        data: {
-          detail,
-          note,
-          title,
-          priority,
-          status,
-        },
-      });
+        await prisma.ticket.update({
+          where: { id: id },
+          data: {
+            detail,
+            note,
+            title,
+            priority,
+            status,
+          },
+        });
 
-      reply.send({
-        success: true,
-      });
+        reply.send({
+          success: true,
+        });
+      } catch (error) {
+        console.error("Error updating ticket:", error);
+        reply.status(500).send({
+          success: false,
+          message: "Failed to update ticket",
+        });
+      }
     }
   );
 
@@ -476,35 +485,43 @@ export function ticketRoutes(fastify: FastifyInstance) {
       preHandler: requirePermission(["issue::transfer"]),
     },
     async (request: FastifyRequest, reply: FastifyReply) => {
-      const { user, id }: any = request.body;
+      try {
+        const { user, id }: any = request.body;
 
-      if (user) {
-        const assigned = await prisma.user.update({
-          where: { id: user },
-          data: {
-            tickets: {
-              connect: {
-                id: id,
+        if (user) {
+          const assigned = await prisma.user.update({
+            where: { id: user },
+            data: {
+              tickets: {
+                connect: {
+                  id: id,
+                },
               },
             },
-          },
+          });
+
+          const { email } = assigned;
+
+          await sendAssignedEmail(email);
+        } else {
+          await prisma.ticket.update({
+            where: { id: id },
+            data: {
+              userId: null,
+            },
+          });
+        }
+
+        reply.send({
+          success: true,
         });
-
-        const { email } = assigned;
-
-        await sendAssignedEmail(email);
-      } else {
-        await prisma.ticket.update({
-          where: { id: id },
-          data: {
-            userId: null,
-          },
+      } catch (error) {
+        console.error("Error transferring ticket:", error);
+        reply.status(500).send({
+          success: false,
+          message: "Failed to transfer ticket",
         });
       }
-
-      reply.send({
-        success: true,
-      });
     }
   );
 

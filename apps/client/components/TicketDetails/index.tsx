@@ -471,13 +471,18 @@ export default function Ticket() {
 
   const [debouncedValue] = useDebounce(issue, 500);
   const [debounceTitle] = useDebounce(title, 500);
+  const hasMounted = useRef(false);
 
   useEffect(() => {
+    if (!hasMounted.current) {
+      hasMounted.current = true;
+      return;
+    }
     update();
   }, [priority, ticketStatus, debounceTitle]);
 
   useEffect(() => {
-    if (issue) {
+    if (issue && hasMounted.current) {
       update();
     }
   }, [debouncedValue]);
